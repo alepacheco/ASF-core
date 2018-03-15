@@ -34,24 +34,10 @@ def align_data(data):
 
 
 def interactive_shell(model):
-    """Creates interactive shell to play with model
-
-    Args:
-        model: instance of NERModel
-
-    """
-    model.logger.info("""
-This is an interactive mode.
-To exit, enter 'exit'.
-You can enter a sentence like
-input> I love Paris""")
-
     while True:
         try:
-            # for python 2
             sentence = raw_input("input> ")
         except NameError:
-            # for python 3
             sentence = input("input> ")
 
         words_raw = sentence.strip().split(" ")
@@ -67,19 +53,14 @@ input> I love Paris""")
 
 
 def main():
-    # create instance of config
     config = Config()
 
-    # build model
     model = NERModel(config)
     model.build()
     model.restore_session(config.dir_model)
 
-    # create dataset
     test  = CoNLLDataset(config.filename_test, config.processing_word,
                          config.processing_tag, config.max_iter)
-
-    # evaluate and interact
     model.evaluate(test)
     interactive_shell(model)
 
