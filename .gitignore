@@ -1,6 +1,10 @@
 *sh
 *pyc
 /data/glove.6B
+/data/chars.txt
+/data/glove.6B.300d.trimmed.npz
+/data/tags.txt
+/data/words.txt
 !/data/.gitkeep
 /results
 *.DS_Store
