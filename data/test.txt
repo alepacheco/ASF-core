@@ -514,7 +514,7 @@ from O
 boston B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-connecting B-connect
+connecting O
 in O
 new O
 york O
@@ -527,7 +527,7 @@ from O
 boston B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-connecting B-connect
+connecting O
 in O
 columbus O
 
@@ -620,7 +620,7 @@ to O
 seattle B-toloc.city_name
 
 what O
-meals B-meal
+meals O
 are O
 served O
 on O
@@ -633,7 +633,7 @@ to O
 milwaukee B-toloc.city_name
 
 what O
-meals B-meal
+meals O
 are O
 served O
 on O
@@ -1432,7 +1432,7 @@ county I-toloc.city_name
 what O
 is O
 the O
-latest B-flight_mod
+latest O
 flight O
 from O
 baltimore B-fromloc.city_name
@@ -1445,7 +1445,7 @@ dinner O
 what O
 is O
 the O
-earliest B-flight_mod
+earliest O
 flight O
 between O
 baltimore B-fromloc.city_name
@@ -1479,7 +1479,7 @@ diego I-toloc.city_name
 what O
 is O
 the O
-latest B-flight_mod
+latest O
 breakfast O
 flight O
 from O
@@ -1528,7 +1528,7 @@ dallas O
 show O
 me O
 the O
-connecting B-connect
+connecting O
 flights O
 between O
 boston B-fromloc.city_name
@@ -1639,7 +1639,7 @@ morning B-depart_time.period_of_day
 show O
 me O
 the O
-direct B-connect
+direct O
 flights O
 from O
 charlotte B-fromloc.city_name
@@ -2178,7 +2178,7 @@ airlines O
 international O
 flights O
 use O
-<UNK> B-aircraft_code
+<UNK> O
 
 how O
 many O
@@ -2188,7 +2188,7 @@ international O
 flights O
 use O
 aircraft O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 
 how O
 many O
@@ -2197,7 +2197,7 @@ airlines O
 flights O
 use O
 aircraft O
-<UNK> B-aircraft_code
+<UNK> O
 
 show O
 me O
@@ -2245,7 +2245,7 @@ louis O
 which O
 airport O
 is O
-<UNK> B-mod
+<UNK> O
 to O
 ontario B-city_name
 california B-state_name
@@ -2318,17 +2318,17 @@ serve O
 a O
 snack O
 to O
-coach B-compartment
+coach O
 passengers O
 
 what O
 is O
 meal O
 code O
-<UNK> B-meal_code
+<UNK> O
 
 what O
-meals B-meal
+meals O
 are O
 available O
 on O
@@ -2375,7 +2375,7 @@ tower O
 air O
 flights O
 with O
-meals B-meal
+meals O
 
 what O
 flights O
@@ -2838,7 +2838,7 @@ the O
 evening B-depart_time.period_of_day
 with O
 a O
-meal B-meal
+meal O
 <UNK> O
 
 list O
@@ -2906,7 +2906,7 @@ saturday B-depart_date.day_name
 pm B-depart_time.period_of_day
 
 list O
-direct B-connect
+direct O
 flights O
 from O
 new B-fromloc.city_name
@@ -3076,7 +3076,7 @@ seating O
 capacity O
 for O
 aircraft O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 is O
@@ -3085,7 +3085,7 @@ seating O
 capacity O
 for O
 delta O
-<UNK> B-aircraft_code
+<UNK> O
 
 list O
 flights O
@@ -3097,7 +3097,7 @@ lake I-toloc.city_name
 city I-toloc.city_name
 on O
 delta O
-<UNK> B-aircraft_code
+<UNK> O
 
 list O
 flights O
@@ -3109,7 +3109,7 @@ lake I-toloc.city_name
 city I-toloc.city_name
 on O
 delta O
-<UNK> B-aircraft_code
+<UNK> O
 
 list O
 flights O
@@ -3979,8 +3979,8 @@ i O
 'd O
 like O
 a O
-<UNK> B-flight_mod
-<UNK> I-flight_mod
+<UNK> O
+<UNK> O
 flight O
 from O
 new B-fromloc.city_name
@@ -4057,7 +4057,7 @@ tuesday B-depart_date.day_name
 mornings B-depart_time.period_of_day
 
 what O
-meals B-meal
+meals O
 are O
 there O
 on O
@@ -4187,7 +4187,7 @@ can O
 i O
 get O
 the O
-shortest B-flight_mod
+shortest O
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -4197,7 +4197,7 @@ orlando B-toloc.city_name
 what O
 is O
 the O
-shortest B-flight_mod
+shortest O
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -4212,14 +4212,14 @@ mean O
 
 what O
 does O
-ap B-restriction_code
-DIGITDIGIT I-restriction_code
+ap O
+DIGITDIGIT O
 mean O
 
 what O
 is O
 the O
-shortest B-flight_mod
+shortest O
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -4230,7 +4230,7 @@ petersburg I-toloc.city_name
 what O
 is O
 the O
-shortest B-flight_mod
+shortest O
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -4241,7 +4241,7 @@ beach I-toloc.city_name
 what O
 is O
 the O
-shortest B-flight_mod
+shortest O
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -4251,8 +4251,8 @@ diego I-toloc.city_name
 
 what O
 does O
-ap B-restriction_code
-DIGITDIGIT I-restriction_code
+ap O
+DIGITDIGIT O
 mean O
 
 can O
@@ -4401,14 +4401,14 @@ city I-toloc.city_name
 
 what O
 does O
-<UNK> B-mod
+<UNK> O
 sa B-days_code
 mean O
 
 what O
 is O
 the O
-earliest B-flight_mod
+earliest O
 daily B-flight_days
 flight O
 between O
@@ -4426,7 +4426,7 @@ dl B-airline_code
 what O
 is O
 the O
-latest B-flight_mod
+latest O
 daily B-flight_days
 flight O
 between O
@@ -4465,7 +4465,7 @@ many O
 passengers O
 can O
 an O
-<UNK> B-aircraft_code
+<UNK> O
 aircraft O
 <UNK> O
 
@@ -4476,7 +4476,7 @@ seating O
 capacity O
 of O
 a O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 are O
@@ -4507,7 +4507,7 @@ capacity O
 for O
 the O
 aircraft O
-m80 B-aircraft_code
+m80 O
 
 are O
 there O
@@ -4519,7 +4519,7 @@ and O
 phoenix B-toloc.city_name
 using O
 a O
-dc10 B-aircraft_code
+dc10 O
 aircraft O
 
 what O
@@ -5300,7 +5300,7 @@ city I-toloc.city_name
 i O
 need O
 an O
-early B-flight_mod
+early O
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -5583,7 +5583,7 @@ to O
 milwaukee B-toloc.city_name
 
 get O
-last B-flight_mod
+last O
 flight O
 from O
 oakland B-fromloc.city_name
@@ -5594,7 +5594,7 @@ city I-toloc.city_name
 on O
 wednesday B-depart_date.day_name
 or B-or
-first B-flight_mod
+first O
 flight O
 from O
 oakland B-fromloc.city_name
@@ -5606,7 +5606,7 @@ on O
 thursday B-depart_date.day_name
 
 get O
-first B-flight_mod
+first O
 flight O
 from O
 oakland B-fromloc.city_name
@@ -5618,7 +5618,7 @@ on O
 thursday B-depart_date.day_name
 
 get O
-last B-flight_mod
+last O
 flight O
 from O
 oakland B-fromloc.city_name
@@ -5630,7 +5630,7 @@ on O
 wednesday B-depart_date.day_name
 
 list O
-last B-flight_mod
+last O
 wednesday B-depart_date.day_name
 flight O
 from O
@@ -6312,8 +6312,8 @@ mean O
 what O
 are O
 restrictions O
-ap B-restriction_code
-DIGITDIGIT I-restriction_code
+ap O
+DIGITDIGIT O
 
 please O
 show O
@@ -6827,7 +6827,7 @@ what O
 does O
 the O
 restriction O
-<UNK> B-restriction_code
+<UNK> O
 mean O
 
 what O
@@ -6906,7 +6906,7 @@ petersburg I-toloc.city_name
 
 show O
 me O
-weekday B-flight_mod
+weekday O
 flights O
 from O
 milwaukee B-fromloc.city_name
@@ -6917,7 +6917,7 @@ way I-round_trip
 
 show O
 me O
-weekday B-flight_mod
+weekday O
 flights O
 from O
 milwaukee B-fromloc.city_name
@@ -7505,7 +7505,7 @@ milwaukee B-toloc.city_name
 give O
 me O
 the O
-meal B-meal
+meal O
 flights O
 departing O
 early B-depart_time.period_mod
@@ -7529,7 +7529,7 @@ saturday B-depart_date.day_name
 morning B-depart_time.period_of_day
 that O
 have O
-meals B-meal
+meals O
 
 give O
 me O
@@ -7540,7 +7540,7 @@ to O
 chicago B-toloc.city_name
 that O
 have O
-meals B-meal
+meals O
 on O
 continental O
 
@@ -7554,7 +7554,7 @@ to O
 chicago B-toloc.city_name
 that O
 have O
-meals B-meal
+meals O
 on O
 continental O
 saturday B-depart_date.day_name
@@ -7572,7 +7572,7 @@ on O
 continental O
 that O
 have O
-meals B-meal
+meals O
 early B-depart_time.period_mod
 saturday B-depart_date.day_name
 morning B-depart_time.period_of_day
@@ -7590,7 +7590,7 @@ to O
 seattle B-toloc.city_name
 that O
 have O
-meals B-meal
+meals O
 early B-depart_time.period_mod
 saturday B-depart_date.day_name
 morning B-depart_time.period_of_day
@@ -7602,7 +7602,7 @@ saturday B-depart_date.day_name
 morning B-depart_time.period_of_day
 flights O
 with O
-meals B-meal
+meals O
 from O
 chicago B-fromloc.city_name
 to O
@@ -7618,7 +7618,7 @@ on O
 continental O
 that O
 have O
-meals B-meal
+meals O
 from O
 chicago B-fromloc.city_name
 to O
@@ -7639,7 +7639,7 @@ on O
 continental O
 that O
 have O
-meals B-meal
+meals O
 
 give O
 me O
@@ -8089,7 +8089,7 @@ i O
 would O
 like O
 a O
-connecting B-connect
+connecting O
 flight O
 from O
 dallas B-fromloc.city_name
@@ -8141,7 +8141,7 @@ dallas B-toloc.city_name
 what O
 is O
 a O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 type O
@@ -8149,12 +8149,12 @@ of O
 plane O
 is O
 a O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 is O
 a O
-<UNK> B-aircraft_code
+<UNK> O
 
 show O
 me O
@@ -8206,7 +8206,7 @@ to O
 miami B-toloc.city_name
 
 are O
-meals B-meal
+meals O
 <UNK> O
 served O
 on O
@@ -8329,8 +8329,8 @@ back B-round_trip
 what O
 is O
 the O
-earliest B-flight_mod
-arriving I-flight_mod
+earliest O
+arriving O
 flight O
 from O
 boston B-fromloc.city_name
@@ -8341,8 +8341,8 @@ dc B-toloc.state_code
 what O
 is O
 the O
-earliest B-flight_mod
-arriving I-flight_mod
+earliest O
+arriving O
 flight O
 between O
 boston B-fromloc.city_name
@@ -8353,8 +8353,8 @@ dc B-toloc.state_code
 what O
 's O
 the O
-earliest B-flight_mod
-arriving I-flight_mod
+earliest O
+arriving O
 flight O
 between O
 boston B-fromloc.city_name
@@ -8365,8 +8365,8 @@ dc B-toloc.state_code
 what O
 is O
 the O
-earliest B-flight_mod
-arriving I-flight_mod
+earliest O
+arriving O
 flight O
 from O
 houston B-fromloc.city_name
@@ -8376,8 +8376,8 @@ orlando B-toloc.city_name
 what O
 is O
 the O
-earliest B-flight_mod
-arriving I-flight_mod
+earliest O
+arriving O
 flight O
 from O
 houston B-fromloc.city_name
@@ -8431,7 +8431,7 @@ capacity O
 on O
 the O
 aircraft O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 
 what O
 is O
@@ -8440,7 +8440,7 @@ seating O
 capacity O
 of O
 a O
-72s B-aircraft_code
+72s O
 
 what O
 is O
@@ -8450,7 +8450,7 @@ capacity O
 of O
 the O
 aircraft O
-72s B-aircraft_code
+72s O
 
 what O
 is O
@@ -8460,7 +8460,7 @@ capacity O
 of O
 the O
 aircraft O
-m80 B-aircraft_code
+m80 O
 
 what O
 is O
@@ -8472,7 +8472,7 @@ the O
 type O
 of O
 aircraft O
-m80 B-aircraft_code
+m80 O
 
 what O
 is O
@@ -8481,7 +8481,7 @@ seating O
 capacity O
 of O
 an O
-m80 B-aircraft_code
+m80 O
 
 what O
 airlines O
@@ -8522,11 +8522,11 @@ the O
 capacity O
 of O
 the O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 is O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 is O
@@ -8535,7 +8535,7 @@ capacity O
 on O
 the O
 aircraft O
-<UNK> B-aircraft_code
+<UNK> O
 
 what O
 is O
@@ -8544,14 +8544,14 @@ seating O
 capacity O
 of O
 a O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 
 how O
 many O
 people O
 will O
 a O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 <UNK> O
 
 how O
@@ -8561,7 +8561,7 @@ can O
 fly O
 on O
 a O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 
 list O
 all O
@@ -8617,20 +8617,20 @@ seating O
 capacity O
 of O
 the O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 
 tell O
 me O
 about O
 the O
-m80 B-aircraft_code
+m80 O
 aircraft O
 
 tell O
 me O
 about O
 the O
-m80 B-aircraft_code
+m80 O
 aircraft O
 
 tell O
@@ -8642,7 +8642,7 @@ of O
 aircraft O
 <UNK> O
 an O
-m80 B-aircraft_code
+m80 O
 
 what O
 is O
@@ -8651,7 +8651,7 @@ seating O
 capacity O
 of O
 the O
-DIGITDIGITDIGIT B-aircraft_code
+DIGITDIGITDIGIT O
 
 what O
 is O
@@ -8660,7 +8660,7 @@ seating O
 capacity O
 of O
 the O
-m80 B-aircraft_code
+m80 O
 
 what O
 is O
@@ -8670,7 +8670,7 @@ capacity O
 on O
 the O
 aircraft O
-m80 B-aircraft_code
+m80 O
 
 list O
 all O
