@@ -37,14 +37,14 @@ sentence
 ### POST `/parse`
 
 ```
-curl -X POST "http://localhost:5000/parse" -d "flight to madrid from los angeles for next sunday"
+curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angeles for next sunday"
 ```
 #### Response
 ```
 {
   "type": "",
   "departure": "los angeles",
-  "destination": "",
+  "destination": "new york",
   "departureDate": "sunday",
   "returnDate": ""
 }
