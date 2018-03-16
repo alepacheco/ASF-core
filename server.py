@@ -19,10 +19,10 @@ def digits2words(sentence):
 
 def get_digits1(text):
     char = ""
-    for i in range(len(text))
+    for i in range(len(text)):
         if text[i].isdigit():
             number = text[i]
-            
+
     return c
 
 
