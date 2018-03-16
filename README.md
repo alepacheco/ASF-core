@@ -6,17 +6,13 @@
 make glove
 ```
 
-Alternatively, you can download them manually [here](https://nlp.stanford.edu/projects/glove/) and update the `glove_filename` entry in `config.py`. You can also choose not to load pretrained word vectors by changing the entry `use_pretrained` to `False` in `model/config.py`.
-
 2. Build the training data, train and evaluate the model with
 ```
 make run
 ```
 
 # Training Data
-
-The training data must be in the following format (identical to the CoNLL2003 dataset).
-A default test file is provided to help you getting started.
+The training data must be in the IOB format
 
 ```
 John B-PER
@@ -36,11 +32,11 @@ sentence
 
 ### POST `/parse`
 
-```
+```sh
 curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angeles for next sunday"
 ```
-#### Response
-```
+> Response
+```json
 {
   "type": "",
   "departure": "los angeles",
