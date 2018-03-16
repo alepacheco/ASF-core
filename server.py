@@ -14,16 +14,16 @@ model.restore_session(config.dir_model)
 def main():
     app.run(debug=True)
 
-def digits2words(sentence):
-    return
-
-def get_digits1(text):
-    char = ""
-    for i in range(len(text)):
-        if text[i].isdigit():
-            number = text[i]
-
-    return c
+# def digits2words(sentence):
+#     return
+#
+# def get_digits1(text):
+#     char = ""
+#     for i in range(len(text)):
+#         if text[i].isdigit():
+#             number = text[i]
+#
+#     return c
 
 
 @app.route('/parse', methods=['POST'])
@@ -68,12 +68,6 @@ def parse():
 
     return json.dumps(prediction) + '\n' + json.dumps(parsed) + '\n'
 
-
-
-# type
-# departure iata: fix typos, find iata
-# destination Same above
-#
 
 if __name__ == '__main__':
    main()
