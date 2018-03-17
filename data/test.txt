@@ -55,8 +55,8 @@ like O
 a O
 flight O
 traveling O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 from O
 phoenix B-fromloc.city_name
 to O
@@ -92,8 +92,8 @@ from O
 toronto B-fromloc.city_name
 to O
 newark B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 leaving O
 wednesday B-depart_date.day_name
 evening B-depart_time.period_of_day
@@ -1400,8 +1400,8 @@ is O
 the O
 most B-cost_relative
 expensive I-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 fare O
 between O
 detroit B-fromloc.city_name
@@ -3643,8 +3643,8 @@ petersburg I-toloc.city_name
 show O
 me O
 a O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flight O
 from O
 milwaukee B-fromloc.city_name
@@ -3659,8 +3659,8 @@ pm I-depart_time.time
 
 show O
 me O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flights O
 from O
 milwaukee B-fromloc.city_name
@@ -3747,8 +3747,8 @@ show O
 me O
 the O
 cheapest B-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flight O
 from O
 san B-fromloc.city_name
@@ -3761,8 +3761,8 @@ show O
 me O
 the O
 cheapest B-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flight O
 from O
 houston B-fromloc.city_name
@@ -3816,8 +3816,8 @@ show O
 me O
 the O
 cheapest B-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 fare O
 from O
 san B-fromloc.city_name
@@ -3844,8 +3844,8 @@ afternoon B-period_of_day
 now O
 show O
 me O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flights O
 from O
 houston B-fromloc.city_name
@@ -6252,8 +6252,8 @@ from O
 milwaukee B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 
 what O
 the O
@@ -6266,8 +6266,8 @@ i O
 'd O
 like O
 a O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 ticket O
 from O
 milwaukee B-fromloc.city_name
@@ -6325,8 +6325,8 @@ from O
 indianapolis B-fromloc.city_name
 to O
 memphis B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 leaving O
 before B-depart_time.time_relative
 DIGITDIGIT B-depart_time.time
@@ -6454,8 +6454,8 @@ mean O
 
 show O
 me O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flights O
 from O
 milwaukee B-fromloc.city_name
@@ -6528,8 +6528,8 @@ show O
 me O
 the O
 cheapest B-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flights O
 from O
 montreal B-fromloc.city_name
@@ -6540,8 +6540,8 @@ show O
 me O
 the O
 cheapest B-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flights O
 from O
 orlando B-fromloc.city_name
@@ -6637,8 +6637,8 @@ us B-airline_code
 columbus B-fromloc.city_name
 to O
 chicago B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 before B-depart_time.time_relative
 DIGITDIGIT B-depart_time.time
 am I-depart_time.time
@@ -6657,8 +6657,8 @@ from O
 milwaukee B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 after B-depart_time.time_relative
 DIGIT B-depart_time.time
 pm I-depart_time.time
@@ -6792,8 +6792,8 @@ nonstop B-flight_stop
 
 show O
 me O
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 flights O
 from O
 indianapolis B-fromloc.city_name
@@ -6912,8 +6912,8 @@ from O
 milwaukee B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 
 show O
 me O
@@ -6923,8 +6923,8 @@ from O
 milwaukee B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 
 what O
 airline O
@@ -7739,8 +7739,8 @@ twenty B-depart_date.day_number
 fifth I-depart_date.day_number
 
 cheapest B-cost_relative
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 fare O
 from O
 indianapolis B-fromloc.city_name
@@ -9859,8 +9859,8 @@ chicago O
 on O
 may B-depart_date.month_name
 seventeenth B-depart_date.day_number
-one B-round_trip
-way I-round_trip
+one B-ow_trip
+way I-ow_trip
 with O
 dinner O
 
