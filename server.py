@@ -19,18 +19,20 @@ def main():
 def parse():
     data = request.get_data()
     sentence = data.strip().decode()
-    preprocessed_sentence = server_utils.preprocess(sentence)
-    preprocessed_sentence = preprocessed_sentence.split(' ')
+    prediction = model.predict(server_utils.preprocess(sentence))
+
     sentence = sentence.split(' ')
 
-    prediction = model.predict(preprocessed_sentence)
     parsed = server_utils.parseLabels(sentence, prediction)
 
     # get iatas from cities
     parsed['departure'] = server_utils.getIATA(parsed['departure'])
     parsed['destination'] = server_utils.getIATA(parsed['destination'])
+    #parsed['departureDate'] = server_utils.parseDates(parsed['departureDate'])
+    #parsed['returnDate'] = server_utils.parseDates(parsed['returnDate'])
 
-    # todo parse: times, dates, return trips
+
+    # TODO parse: times
     return json.dumps(prediction) + '\n' +json.dumps(parsed) + '\n'
 
 if __name__ == '__main__':

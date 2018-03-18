@@ -56,5 +56,5 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 
 - [ ] Add fastText model to correct typos
 - [ ] Use separate model to format dates in a standardized way
-- [ ] Get IATA codes for cities
+- [X] Get IATA codes for cities
 - [ ] Train model with IATA codes

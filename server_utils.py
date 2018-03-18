@@ -2,12 +2,14 @@ import http.client
 import json
 import csv
 import re
+import parsedatetime
+import datetime
 
 def preprocess(sentence):
     encoded = encodeDigits(sentence)
     encoded = encodeMonths(encoded)
     encoded = encodeIatas(encoded)
-    return encoded
+    return encoded.split(' ')
 
 
 def getIATA(city):
@@ -37,7 +39,7 @@ def getIATA(city):
         return ''
 
 def validateIATA(iata):
-    code = iata.upper().strip()
+    code = iata.strip()
     with open('data/IATAs.csv', 'rt') as f:
         reader = csv.reader(f, delimiter=',')
         for row in reader:
@@ -54,8 +56,18 @@ def encodeMonths(sentence):
 def encodeIatas(sentence):
     candidates = re.findall(r'\b[a-zA-Z]{3}\b', sentence)
     iatas = list(filter(validateIATA, candidates))
+    if len(iatas) < 1:
+        return sentence
     regexExp = re.compile('\\b(' + '|'.join(iatas) + ')\\b')
     return re.sub(regexExp, 'IATA', sentence)
+
+def parseDates(date):
+    pdt = parsedatetime.Calendar()
+    timestruct, result = pdt.parse(date)
+    if result:
+        return datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d")
+    else:
+        return ''
 
 def parseLabels(sentence, prediction):
     parsed = {
