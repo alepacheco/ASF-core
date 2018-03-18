@@ -62,9 +62,11 @@ def encodeIatas(sentence):
     return re.sub(regexExp, 'IATA', sentence)
 
 def parseDates(date):
+    print(date)
     pdt = parsedatetime.Calendar()
     timestruct, result = pdt.parse(date)
     if result:
+        print(datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d"))
         return datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d")
     else:
         return ''
@@ -107,5 +109,10 @@ def parseLabels(sentence, prediction):
             parsed['returnDate'] = word
         elif label.startswith("I-return_date"):
             parsed['returnDate'] += ' ' + word
+
+    parsed['departure'] = getIATA(parsed['departure'])
+    parsed['destination'] = getIATA(parsed['destination'])
+    parsed['departureDate'] = parseDates(parsed['departureDate'])
+    parsed['returnDate'] = parseDates(parsed['returnDate'])
 
     return parsed

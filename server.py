@@ -25,12 +25,6 @@ def parse():
 
     parsed = server_utils.parseLabels(sentence, prediction)
 
-    # get iatas from cities
-    parsed['departure'] = server_utils.getIATA(parsed['departure'])
-    parsed['destination'] = server_utils.getIATA(parsed['destination'])
-    parsed['departureDate'] = server_utils.parseDates(parsed['departureDate'])
-    #parsed['returnDate'] = server_utils.parseDates(parsed['returnDate'])
-
 
     # TODO parse: times
     return json.dumps(prediction) + '\n' +json.dumps(parsed) + '\n'

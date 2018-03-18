@@ -44,9 +44,10 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 ```json
 {
   "type": "",
-  "departure": "los angeles",
-  "destination": "new york",
-  "departureDate": "sunday",
+  "departure": "LAX",
+  "destination": "NYC",
+  "departureDate": "2018-03-25",
+  "departureTime": "",
   "returnDate": ""
 }
 ```
@@ -54,7 +55,7 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 
 # Next steps
 
-- [ ] Add fastText model to correct typos
-- [ ] Use separate model to format dates in a standardized way
 - [X] Get IATA codes for cities
-- [ ] Train model with IATA codes
+- [ ] Remove unused labels
+  - [ ] returnDates
+  - [ ] times
