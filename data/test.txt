@@ -20,7 +20,7 @@ louis O
 
 on O
 MONTH B-depart_date.month_name
-first B-depart_date.day_number
+first I-depart_date.day_number
 i O
 need O
 a O
@@ -37,7 +37,7 @@ am I-depart_time.time
 
 on O
 MONTH B-depart_date.month_name
-first B-depart_date.day_number
+first I-depart_date.day_number
 i O
 need O
 a O
@@ -64,7 +64,7 @@ san B-toloc.city_name
 diego I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-first B-depart_date.day_number
+first I-depart_date.day_number
 
 i O
 would O
@@ -79,7 +79,7 @@ lake I-toloc.city_name
 city I-toloc.city_name
 for O
 MONTH B-depart_date.month_name
-first B-depart_date.day_number
+first I-depart_date.day_number
 on O
 delta O
 airlines O
@@ -116,7 +116,7 @@ indianapolis B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 i O
 would O
 like O
@@ -137,7 +137,7 @@ pm I-depart_time.time
 on O
 wednesday B-depart_date.day_name
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 i O
 would O
 like O
@@ -161,7 +161,7 @@ columbus B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 
 find O
 a O
@@ -247,7 +247,7 @@ york I-toloc.city_name
 on O
 saturday B-depart_date.day_name
 MONTH B-depart_date.month_name
-ninth B-depart_date.day_number
+ninth I-depart_date.day_number
 
 show O
 flights O
@@ -348,7 +348,7 @@ los B-toloc.city_name
 angeles I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-ninth B-depart_date.day_number
+ninth I-depart_date.day_number
 
 which O
 flights O
@@ -391,7 +391,7 @@ to O
 indianapolis B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-fifth B-depart_date.day_number
+fifth I-depart_date.day_number
 
 which O
 flights O
@@ -403,7 +403,7 @@ san B-toloc.city_name
 diego I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-fifth B-depart_date.day_number
+fifth I-depart_date.day_number
 
 which O
 flights O
@@ -414,7 +414,7 @@ to O
 indianapolis B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-fifth B-depart_date.day_number
+fifth I-depart_date.day_number
 
 which O
 flights O
@@ -812,7 +812,7 @@ leave O
 chicago B-fromloc.city_name
 on O
 MONTH B-depart_date.month_name
-twelfth B-depart_date.day_number
+twelfth I-depart_date.day_number
 and O
 arrive O
 in O
@@ -827,7 +827,7 @@ leave O
 on O
 wednesday B-depart_date.day_name
 MONTH B-depart_date.month_name
-thirteenth B-depart_date.day_number
+thirteenth I-depart_date.day_number
 from O
 indianapolis B-fromloc.city_name
 and O
@@ -842,7 +842,7 @@ which O
 flights O
 leave O
 MONTH B-depart_date.month_name
-twelfth B-depart_date.day_number
+twelfth I-depart_date.day_number
 from O
 indianapolis B-fromloc.city_name
 and O
@@ -1291,7 +1291,7 @@ vegas I-fromloc.city_name
 on O
 saturday B-depart_date.day_name
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 third I-depart_date.day_number
 in O
 the O
@@ -1322,7 +1322,7 @@ san B-toloc.city_name
 diego I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 first I-depart_date.day_number
 in O
 the O
@@ -1338,7 +1338,7 @@ to O
 indianapolis B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 first I-depart_date.day_number
 in O
 the O
@@ -1350,7 +1350,7 @@ are O
 available O
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 first I-depart_date.day_number
 in O
 the O
@@ -1374,7 +1374,7 @@ the O
 morning B-depart_time.period_of_day
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 second I-depart_date.day_number
 
 which O
@@ -1392,7 +1392,7 @@ the O
 morning B-depart_time.period_of_day
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 three I-depart_date.day_number
 
 what O
@@ -1802,7 +1802,7 @@ to O
 houston B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-tenth B-depart_date.day_number
+tenth I-depart_date.day_number
 
 is O
 there O
@@ -1816,7 +1816,7 @@ to O
 newark B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-tenth B-depart_date.day_number
+tenth I-depart_date.day_number
 after B-depart_time.time_relative
 DIGIT B-depart_time.time
 pm I-depart_time.time
@@ -1833,7 +1833,7 @@ to O
 newark B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-tenth B-depart_date.day_number
+tenth I-depart_date.day_number
 after B-depart_time.time_relative
 DIGIT B-depart_time.time
 pm I-depart_time.time
@@ -1892,7 +1892,7 @@ westchester B-toloc.city_name
 county I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventh B-depart_date.day_number
+seventh I-depart_date.day_number
 after B-depart_time.time_relative
 DIGIT B-depart_time.time
 pm I-depart_time.time
@@ -1916,7 +1916,7 @@ airlines O
 flight O
 on O
 MONTH B-depart_date.month_name
-eighth B-depart_date.day_number
+eighth I-depart_date.day_number
 from O
 westchester B-fromloc.city_name
 county I-fromloc.city_name
@@ -1932,7 +1932,7 @@ airlines O
 flights O
 on O
 MONTH B-depart_date.month_name
-eighth B-depart_date.day_number
+eighth I-depart_date.day_number
 go O
 from O
 westchester B-fromloc.city_name
@@ -1942,7 +1942,7 @@ cincinnati B-toloc.city_name
 
 on O
 MONTH B-depart_date.month_name
-eighth B-depart_date.day_number
+eighth I-depart_date.day_number
 what O
 flights O
 go O
@@ -1962,7 +1962,7 @@ to O
 denver B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 
 list O
 the O
@@ -1973,7 +1973,7 @@ to O
 denver B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 
 list O
 the O
@@ -1985,7 +1985,7 @@ westchester B-toloc.city_name
 county I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventh B-depart_date.day_number
+seventh I-depart_date.day_number
 
 list O
 the O
@@ -1997,7 +1997,7 @@ to O
 cincinnati B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-eighth B-depart_date.day_number
+eighth I-depart_date.day_number
 
 list O
 the O
@@ -2009,7 +2009,7 @@ westchester B-toloc.city_name
 county I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 
 list O
 the O
@@ -2021,7 +2021,7 @@ to O
 denver B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventh B-depart_date.day_number
+seventh I-depart_date.day_number
 
 list O
 the O
@@ -2032,7 +2032,7 @@ to O
 cincinnati B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-eighth B-depart_date.day_number
+eighth I-depart_date.day_number
 
 list O
 the O
@@ -2043,7 +2043,7 @@ to O
 cincinnati B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 after B-depart_time.time_relative
 DIGIT B-depart_time.time
 pm I-depart_time.time
@@ -2058,7 +2058,7 @@ westchester B-toloc.city_name
 county I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventh B-depart_date.day_number
+seventh I-depart_date.day_number
 
 list O
 the O
@@ -2070,7 +2070,7 @@ to O
 cincinnati B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventh B-depart_date.day_number
+seventh I-depart_date.day_number
 leaving O
 after B-depart_time.time_relative
 DIGIT B-depart_time.time
@@ -2089,7 +2089,7 @@ DIGITDIGIT B-depart_time.end_time
 am I-depart_time.end_time
 on O
 MONTH B-depart_date.month_name
-sixth B-depart_date.day_number
+sixth I-depart_date.day_number
 
 what O
 flights O
@@ -3808,9 +3808,8 @@ to O
 houston B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 eighth I-depart_date.day_number
-DIGITDIGITDIGITDIGIT B-depart_date.year
 
 show O
 me O
@@ -3826,9 +3825,8 @@ to O
 houston B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 eighth I-depart_date.day_number
-DIGITDIGITDIGITDIGIT B-depart_date.year
 
 now O
 show O
@@ -7677,7 +7675,7 @@ to O
 orlando B-toloc.city_name
 around B-depart_time.time_relative
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 fifth I-depart_date.day_number
 
 i O
@@ -7735,7 +7733,7 @@ to O
 orlando B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 fifth I-depart_date.day_number
 
 cheapest B-cost_relative
@@ -7748,7 +7746,7 @@ to O
 orlando B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 seventh I-depart_date.day_number
 
 flight O
@@ -7873,7 +7871,7 @@ indianapolis B-fromloc.city_name
 to O
 orlando B-toloc.city_name
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 seventh I-depart_date.day_number
 
 cheapest B-cost_relative
@@ -7899,7 +7897,7 @@ to O
 orlando B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 seventh I-depart_date.day_number
 
 cleveland B-fromloc.city_name
@@ -9536,7 +9534,7 @@ to O
 chicago B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-sixteenth B-depart_date.day_number
+sixteenth I-depart_date.day_number
 
 please O
 give O
@@ -9550,7 +9548,7 @@ kansas B-toloc.city_name
 city I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventeenth B-depart_date.day_number
+seventeenth I-depart_date.day_number
 
 please O
 list O
@@ -9564,7 +9562,7 @@ to O
 chicago B-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-sixteenth B-depart_date.day_number
+sixteenth I-depart_date.day_number
 
 please O
 list O
@@ -9578,7 +9576,7 @@ kansas B-toloc.city_name
 city I-toloc.city_name
 on O
 MONTH B-depart_date.month_name
-seventeenth B-depart_date.day_number
+seventeenth I-depart_date.day_number
 
 i O
 'd O
@@ -9697,7 +9695,7 @@ chicago B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
 MONTH B-depart_date.month_name
-twenty B-depart_date.day_number
+twenty I-depart_date.day_number
 sixth I-depart_date.day_number
 arriving O
 at O
@@ -9827,8 +9825,7 @@ DIGITDIGITDIGIT B-fare_amount
 dollars I-fare_amount
 for O
 MONTH B-depart_date.month_name
-tenth B-depart_date.day_number
-DIGITDIGITDIGITDIGIT B-depart_date.year
+tenth I-depart_date.day_number
 
 are O
 there O
@@ -9836,7 +9833,7 @@ any O
 flights O
 on O
 MONTH B-depart_date.month_name
-tenth B-depart_date.day_number
+tenth I-depart_date.day_number
 from O
 burbank B-fromloc.city_name
 to O
@@ -9858,7 +9855,7 @@ in O
 chicago O
 on O
 MONTH B-depart_date.month_name
-seventeenth B-depart_date.day_number
+seventeenth I-depart_date.day_number
 one B-ow_trip
 way I-ow_trip
 with O

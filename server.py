@@ -28,7 +28,7 @@ def parse():
     # get iatas from cities
     parsed['departure'] = server_utils.getIATA(parsed['departure'])
     parsed['destination'] = server_utils.getIATA(parsed['destination'])
-    #parsed['departureDate'] = server_utils.parseDates(parsed['departureDate'])
+    parsed['departureDate'] = server_utils.parseDates(parsed['departureDate'])
     #parsed['returnDate'] = server_utils.parseDates(parsed['returnDate'])
 
 
