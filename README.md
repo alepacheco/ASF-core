@@ -56,6 +56,7 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 # Next steps
 
 - [X] Get IATA codes for cities
+- [ ] Fix '10am' interpretation to '10 am'
+- [ ] Fix dates digits as time 
 - [ ] Remove unused labels
   - [ ] returnDates
-  - [ ] times

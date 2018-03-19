@@ -9,6 +9,7 @@ def preprocess(sentence):
     encoded = encodeDigits(sentence)
     encoded = encodeMonths(encoded)
     encoded = encodeIatas(encoded)
+    encoded = preprocessTimes(encoded)
     return encoded.split(' ')
 
 
@@ -36,7 +37,7 @@ def getIATA(city):
     try:
         return aiports['3'][0]['2']
     except KeyError:
-        return ''
+        return None
 
 def validateIATA(iata):
     code = iata.strip()
@@ -46,6 +47,18 @@ def validateIATA(iata):
             if code == row[0]:
                 return True
     return False
+
+def preprocessTimes(sentence):
+    times = re.finditer(r'[0-9]{2}(?:am|pm)\b', sentence)
+    positions = []
+    for item in times:
+        positions.append(item.start())
+
+    sentence = list(sentence)
+    for index, breakPoint in enumerate(positions):
+        sentence.insert(breakPoint + 2 + index, ' ')
+
+    return ''.join(sentence)
 
 def encodeDigits(sentence):
     return ''.join(list(map(lambda x: 'DIGIT' if x.isdigit() else x, sentence)))
@@ -62,23 +75,26 @@ def encodeIatas(sentence):
     return re.sub(regexExp, 'IATA', sentence)
 
 def parseDates(date):
-    print(date)
     pdt = parsedatetime.Calendar()
     timestruct, result = pdt.parse(date)
     if result:
-        print(datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d"))
         return datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d")
     else:
-        return ''
+        return None
+
+def validateTime(time):
+    if ':' in time or 'pm' in time or 'am' in time:
+        return time
+    else:
+        return None
 
 def parseLabels(sentence, prediction):
     parsed = {
-        'type': '',
+        'type': None,
         'departure': '',
         'destination': '',
         'departureDate': '',
-        'departureTime': '',
-        'returnDate': ''
+        'departureTime': ''
     }
 
     for i in range(len(prediction)):
@@ -102,17 +118,16 @@ def parseLabels(sentence, prediction):
         elif label.startswith("I-depart_date"):
             parsed['departureDate'] += ' ' + word
         elif label.startswith("B-depart_time"):
-            parsed['departureTime'] = word
+            parsed['departureDate'] += ' ' + word
+            if validateTime(parsed['departureTime']) is None:
+                parsed['departureTime'] = word
         elif label.startswith("I-depart_time"):
+            parsed['departureDate'] += ' ' + word
             parsed['departureTime'] += ' ' + word
-        elif label.startswith("B-return_date"):
-            parsed['returnDate'] = word
-        elif label.startswith("I-return_date"):
-            parsed['returnDate'] += ' ' + word
 
     parsed['departure'] = getIATA(parsed['departure'])
     parsed['destination'] = getIATA(parsed['destination'])
     parsed['departureDate'] = parseDates(parsed['departureDate'])
-    parsed['returnDate'] = parseDates(parsed['returnDate'])
+    parsed['departureTime'] = validateTime(parsed['departureTime'])
 
     return parsed

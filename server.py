@@ -20,13 +20,10 @@ def parse():
     data = request.get_data()
     sentence = data.strip().decode()
     prediction = model.predict(server_utils.preprocess(sentence))
-
     sentence = sentence.split(' ')
 
     parsed = server_utils.parseLabels(sentence, prediction)
 
-
-    # TODO parse: times
     return json.dumps(prediction) + '\n' +json.dumps(parsed) + '\n'
 
 if __name__ == '__main__':
