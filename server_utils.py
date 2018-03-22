@@ -6,12 +6,8 @@ import parsedatetime
 import datetime
 
 def preprocess(sentence):
-    encoded = encodeDigits(sentence)
-    encoded = encodeMonths(encoded)
-    encoded = encodeIatas(encoded)
-    encoded = preprocessTimes(encoded)
+    encoded = preprocessTimes(sentence)
     return encoded.split(' ')
-
 
 def getIATA(city):
     conn = http.client.HTTPSConnection("www.google.es")
@@ -39,14 +35,6 @@ def getIATA(city):
     except KeyError:
         return None
 
-def validateIATA(iata):
-    code = iata.strip()
-    with open('data/IATAs.csv', 'rt') as f:
-        reader = csv.reader(f, delimiter=',')
-        for row in reader:
-            if code == row[0]:
-                return True
-    return False
 
 def preprocessTimes(sentence):
     times = re.finditer(r'[0-9]{2}(?:am|pm)\b', sentence)
@@ -59,20 +47,6 @@ def preprocessTimes(sentence):
         sentence.insert(breakPoint + 2 + index, ' ')
 
     return ''.join(sentence)
-
-def encodeDigits(sentence):
-    return ''.join(list(map(lambda x: '$num$' if x.isdigit() else x, sentence)))
-
-def encodeMonths(sentence):
-    return re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', '$month$', sentence)
-
-def encodeIatas(sentence):
-    candidates = re.findall(r'\b[a-zA-Z]{3}\b', sentence)
-    iatas = list(filter(validateIATA, candidates))
-    if len(iatas) < 1:
-        return sentence
-    regexExp = re.compile('\\b(' + '|'.join(iatas) + ')\\b')
-    return re.sub(regexExp, 'IATA', sentence)
 
 def parseDates(date):
     pdt = parsedatetime.Calendar()

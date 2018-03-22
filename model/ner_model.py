@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import tensorflow as tf
-
+import progressbar
 
 from .data_utils import minibatches, pad_sequences, get_chunks
 from .general_utils import Progbar
@@ -405,20 +405,17 @@ class NERModel():
             f1: (python float), score to select model on, higher is better
 
         """
-        # progbar stuff for logging
         batch_size = self.config.batch_size
         nbatches = (len(train) + batch_size - 1) // batch_size
-        prog = Progbar(target=nbatches)
+        bar = progressbar.ProgressBar(max_value=nbatches)
 
         # iterate over dataset
-        for i, (words, labels) in enumerate(minibatches(train, batch_size)):
+        for i, (words, labels) in bar(enumerate(minibatches(train, batch_size))):
             fd, _ = self.get_feed_dict(words, labels, self.config.lr,
                     self.config.dropout)
 
             _, train_loss, summary = self.sess.run(
                     [self.train_op, self.loss, self.merged], feed_dict=fd)
-
-            prog.update(i + 1, [("train loss", train_loss)])
 
             # tensorboard
             if i % 10 == 0:

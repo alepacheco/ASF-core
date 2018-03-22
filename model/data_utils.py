@@ -1,10 +1,12 @@
 import numpy as np
 import os
 import re
-
+import csv
 # shared global variables to be imported from model also
-UNK = "$UNK$"
+UNK = "$unk$"
 NUM = "$num$"
+MONTH = "$month$"
+IATA = "$iata$"
 NONE = "O"
 
 
@@ -235,7 +237,9 @@ def get_trimmed_glove_vectors(filename):
 
 
 def get_processing_word(vocab_words=None, vocab_chars=None,
-                    lowercase=False, chars=False, allow_unk=True, replace_month=True, replace_digits=True):
+                    lowercase=False, chars=False, allow_unk=True,
+                    replace_month=True, replace_digits=True,
+                    encode_iatas=True):
     """Return lambda function that transform a word (string) into list,
     or tuple of (list, id) of int corresponding to the ids of the word and
     its corresponding characters.
@@ -253,20 +257,18 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
         if vocab_chars is not None and chars == True:
             char_ids = []
             for char in word:
-                # ignore chars out of vocabulary
                 if char in vocab_chars:
                     char_ids += [vocab_chars[char]]
 
         if lowercase:
             word = word.lower()
-
         if replace_month:
-            word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', '$month$', word)
-
+            word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', MONTH, word)
         if replace_digits:
-            word = ''.join(list(map(lambda x: '$num$' if x.isdigit() else x, word)))
+            word = ''.join(list(map(lambda x: NUM if x.isdigit() else x, word)))
+        if encode_iatas:
+            word = encodeIatas(word)
 
-        print(word)
         # 2. get id of word
         if vocab_words is not None:
             if word in vocab_words:
@@ -285,6 +287,25 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
             return word
 
     return f
+
+
+def encodeIatas(sentence):
+    def validateIATA(iata):
+        code = iata.strip()
+        with open('data/IATAs.csv', 'rt') as f:
+            reader = csv.reader(f, delimiter=',')
+            for row in reader:
+                if code == row[0]:
+                    return True
+        return False
+
+    candidates = re.findall(r'\b[a-zA-Z]{3}\b', sentence)
+    iatas = list(filter(validateIATA, candidates))
+    if len(iatas) < 1:
+        return sentence
+    regexExp = re.compile('\\b(' + '|'.join(iatas) + ')\\b')
+    return re.sub(regexExp, IATA, sentence)
+
 
 
 def _pad_sequences(sequences, pad_tok, max_length):
