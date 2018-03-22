@@ -1,10 +1,10 @@
 import numpy as np
 import os
-
+import re
 
 # shared global variables to be imported from model also
 UNK = "$UNK$"
-NUM = "$NUM$"
+NUM = "$num$"
 NONE = "O"
 
 
@@ -235,7 +235,7 @@ def get_trimmed_glove_vectors(filename):
 
 
 def get_processing_word(vocab_words=None, vocab_chars=None,
-                    lowercase=False, chars=False, allow_unk=True):
+                    lowercase=False, chars=False, allow_unk=True, replace_month=True, replace_digits=True):
     """Return lambda function that transform a word (string) into list,
     or tuple of (list, id) of int corresponding to the ids of the word and
     its corresponding characters.
@@ -257,12 +257,16 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
                 if char in vocab_chars:
                     char_ids += [vocab_chars[char]]
 
-        # 1. preprocess word
         if lowercase:
             word = word.lower()
-        if word.isdigit():
-            word = NUM
 
+        if replace_month:
+            word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', '$month$', word)
+
+        if replace_digits:
+            word = ''.join(list(map(lambda x: '$num$' if x.isdigit() else x, word)))
+
+        print(word)
         # 2. get id of word
         if vocab_words is not None:
             if word in vocab_words:

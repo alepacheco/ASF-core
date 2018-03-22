@@ -19,7 +19,7 @@ st. O
 louis O
 
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 first I-depart_date.day_number
 i O
 need O
@@ -32,11 +32,11 @@ san B-toloc.city_name
 jose I-toloc.city_name
 departing O
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 first I-depart_date.day_number
 i O
 need O
@@ -63,7 +63,7 @@ to O
 san B-toloc.city_name
 diego I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 first I-depart_date.day_number
 
 i O
@@ -78,7 +78,7 @@ salt B-toloc.city_name
 lake I-toloc.city_name
 city I-toloc.city_name
 for O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 first I-depart_date.day_number
 on O
 delta O
@@ -115,7 +115,7 @@ indianapolis B-toloc.city_name
 
 on O
 wednesday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 i O
 would O
@@ -128,15 +128,15 @@ beach I-fromloc.city_name
 to O
 columbus B-toloc.city_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 after B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 pm I-depart_time.time
 on O
 wednesday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 i O
 would O
@@ -160,7 +160,7 @@ to O
 columbus B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 
 find O
@@ -186,7 +186,7 @@ arrive O
 in O
 chicago B-toloc.city_name
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 return O
 flight O
@@ -208,7 +208,7 @@ arriving O
 in O
 chicago B-toloc.city_name
 by B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 flight O
@@ -222,7 +222,7 @@ arrive O
 in O
 chicago B-toloc.city_name
 about B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 find O
@@ -246,7 +246,7 @@ new B-toloc.city_name
 york I-toloc.city_name
 on O
 saturday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 ninth I-depart_date.day_number
 
 show O
@@ -347,7 +347,7 @@ to O
 los B-toloc.city_name
 angeles I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 ninth I-depart_date.day_number
 
 which O
@@ -363,12 +363,12 @@ california B-toloc.state_name
 and O
 arrive O
 on O
-MONTH B-arrive_date.month_name
+$month$ B-arrive_date.month_name
 ninth B-arrive_date.day_number
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 which O
@@ -390,7 +390,7 @@ cleveland B-fromloc.city_name
 to O
 indianapolis B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 fifth I-depart_date.day_number
 
 which O
@@ -402,7 +402,7 @@ to O
 san B-toloc.city_name
 diego I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 fifth I-depart_date.day_number
 
 which O
@@ -413,7 +413,7 @@ cleveland B-fromloc.city_name
 to O
 indianapolis B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 fifth I-depart_date.day_number
 
 which O
@@ -626,7 +626,7 @@ served O
 on O
 american O
 flight O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 from O
 tampa B-fromloc.city_name
 to O
@@ -639,8 +639,8 @@ served O
 on O
 american O
 flight O
-$NUM$$NUM$$NUM$ O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
+$num$$num$$num$ O
 from O
 milwaukee B-fromloc.city_name
 to O
@@ -711,7 +711,7 @@ at O
 st. B-toloc.city_name
 petersburg I-toloc.city_name
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 am I-arrive_time.time
 
 which O
@@ -738,7 +738,7 @@ arrive O
 in O
 detroit B-toloc.city_name
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 show O
@@ -768,7 +768,7 @@ chicago B-fromloc.city_name
 next B-depart_date.date_relative
 tuesday B-depart_date.day_name
 around B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 and O
 arrive O
@@ -788,7 +788,7 @@ arrive O
 in O
 detroit B-toloc.city_name
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 which O
@@ -811,7 +811,7 @@ flights O
 leave O
 chicago B-fromloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twelfth I-depart_date.day_number
 and O
 arrive O
@@ -826,7 +826,7 @@ flights O
 leave O
 on O
 wednesday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 thirteenth I-depart_date.day_number
 from O
 indianapolis B-fromloc.city_name
@@ -841,7 +841,7 @@ morning B-arrive_time.period_of_day
 which O
 flights O
 leave O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twelfth I-depart_date.day_number
 from O
 indianapolis B-fromloc.city_name
@@ -850,7 +850,7 @@ arrive O
 in O
 montreal B-toloc.city_name
 around B-arrive_time.time_relative
-$NUM$$NUM$ B-arrive_time.time
+$num$$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -902,7 +902,7 @@ arrives O
 in O
 chicago B-toloc.city_name
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -913,7 +913,7 @@ return O
 from O
 chicago B-fromloc.city_name
 around B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 to O
 kansas B-toloc.city_name
@@ -1084,7 +1084,7 @@ vegas I-toloc.city_name
 <UNK> B-toloc.state_name
 arriving O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 o'clock I-arrive_time.time
 pm I-arrive_time.time
 
@@ -1110,7 +1110,7 @@ st. B-toloc.city_name
 petersburg I-toloc.city_name
 arriving O
 before B-arrive_time.time_relative
-$NUM$$NUM$ B-arrive_time.time
+$num$$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 please O
@@ -1290,7 +1290,7 @@ las B-fromloc.city_name
 vegas I-fromloc.city_name
 on O
 saturday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 third I-depart_date.day_number
 in O
@@ -1308,7 +1308,7 @@ cleveland B-toloc.city_name
 that O
 arrive O
 around B-arrive_time.time_relative
-$NUM$$NUM$ B-arrive_time.time
+$num$$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 what O
@@ -1321,7 +1321,7 @@ to O
 san B-toloc.city_name
 diego I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 first I-depart_date.day_number
 in O
@@ -1337,7 +1337,7 @@ going O
 to O
 indianapolis B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 first I-depart_date.day_number
 in O
@@ -1349,7 +1349,7 @@ flights O
 are O
 available O
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 first I-depart_date.day_number
 in O
@@ -1373,7 +1373,7 @@ in O
 the O
 morning B-depart_time.period_of_day
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 second I-depart_date.day_number
 
@@ -1391,7 +1391,7 @@ in O
 the O
 morning B-depart_time.period_of_day
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 three I-depart_date.day_number
 
@@ -1569,7 +1569,7 @@ show O
 me O
 northwest O
 flight O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 from O
 kansas B-fromloc.city_name
 city I-fromloc.city_name
@@ -1616,7 +1616,7 @@ minneapolis B-toloc.city_name
 that O
 leave O
 at O
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 or O
 later B-depart_time.time_relative
@@ -1653,7 +1653,7 @@ show O
 me O
 flight O
 us B-airline_code
-$NUM$$NUM$$NUM$$NUM$ O
+$num$$num$$num$$num$ O
 on O
 monday B-depart_date.day_name
 from O
@@ -1676,7 +1676,7 @@ tuesday B-depart_date.day_name
 that O
 leave O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 show O
@@ -1705,7 +1705,7 @@ show O
 me O
 flight O
 us B-airline_code
-$NUM$$NUM$$NUM$$NUM$ O
+$num$$num$$num$$num$ O
 from O
 indianapolis B-fromloc.city_name
 to O
@@ -1715,7 +1715,7 @@ monday B-depart_date.day_name
 and O
 flight O
 us O
-$NUM$$NUM$$NUM$$NUM$ O
+$num$$num$$num$$num$ O
 from O
 charlotte B-fromloc.city_name
 to O
@@ -1725,7 +1725,7 @@ monday B-depart_date.day_name
 and O
 flight O
 twa B-airline_code
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 from O
 minneapolis B-fromloc.city_name
 to O
@@ -1786,7 +1786,7 @@ miami B-toloc.city_name
 that O
 leave O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 tomorrow B-depart_date.today_relative
 
@@ -1801,7 +1801,7 @@ diego I-fromloc.city_name
 to O
 houston B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 tenth I-depart_date.day_number
 
 is O
@@ -1815,10 +1815,10 @@ houston B-fromloc.city_name
 to O
 newark B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 tenth I-depart_date.day_number
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 is O
@@ -1832,10 +1832,10 @@ houston B-fromloc.city_name
 to O
 newark B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 tenth I-depart_date.day_number
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -1847,10 +1847,10 @@ cincinnati B-fromloc.city_name
 to O
 denver B-toloc.city_name
 on O
-MONTH B-arrive_date.month_name
+$month$ B-arrive_date.month_name
 sixth B-arrive_date.day_number
 by B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 what O
@@ -1891,10 +1891,10 @@ to O
 westchester B-toloc.city_name
 county I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventh I-depart_date.day_number
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 what O
@@ -1915,7 +1915,7 @@ united O
 airlines O
 flight O
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 eighth I-depart_date.day_number
 from O
 westchester B-fromloc.city_name
@@ -1923,7 +1923,7 @@ county I-fromloc.city_name
 to O
 cincinnati B-toloc.city_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 what O
@@ -1931,7 +1931,7 @@ united O
 airlines O
 flights O
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 eighth I-depart_date.day_number
 go O
 from O
@@ -1941,7 +1941,7 @@ to O
 cincinnati B-toloc.city_name
 
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 eighth I-depart_date.day_number
 what O
 flights O
@@ -1961,7 +1961,7 @@ cincinnati B-fromloc.city_name
 to O
 denver B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 
 list O
@@ -1972,7 +1972,7 @@ cincinnati B-fromloc.city_name
 to O
 denver B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 
 list O
@@ -1984,7 +1984,7 @@ to O
 westchester B-toloc.city_name
 county I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventh I-depart_date.day_number
 
 list O
@@ -1996,7 +1996,7 @@ county I-fromloc.city_name
 to O
 cincinnati B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 eighth I-depart_date.day_number
 
 list O
@@ -2008,7 +2008,7 @@ to O
 westchester B-toloc.city_name
 county I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 
 list O
@@ -2020,7 +2020,7 @@ county I-fromloc.city_name
 to O
 denver B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventh I-depart_date.day_number
 
 list O
@@ -2031,7 +2031,7 @@ denver B-fromloc.city_name
 to O
 cincinnati B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 eighth I-depart_date.day_number
 
 list O
@@ -2042,10 +2042,10 @@ denver B-fromloc.city_name
 to O
 cincinnati B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 list O
@@ -2057,7 +2057,7 @@ to O
 westchester B-toloc.city_name
 county I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventh I-depart_date.day_number
 
 list O
@@ -2069,11 +2069,11 @@ county I-fromloc.city_name
 to O
 cincinnati B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventh I-depart_date.day_number
 leaving O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 what O
@@ -2083,12 +2083,12 @@ from O
 love B-fromloc.airport_name
 field I-fromloc.airport_name
 between O
-$NUM$ B-depart_time.start_time
+$num$ B-depart_time.start_time
 and O
-$NUM$$NUM$ B-depart_time.end_time
+$num$$num$ B-depart_time.end_time
 am I-depart_time.end_time
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixth I-depart_date.day_number
 
 what O
@@ -2098,7 +2098,7 @@ at O
 love B-toloc.airport_name
 field I-toloc.airport_name
 on O
-MONTH B-arrive_date.month_name
+$month$ B-arrive_date.month_name
 sixth B-arrive_date.day_number
 
 list O
@@ -2109,7 +2109,7 @@ montreal B-fromloc.city_name
 to O
 philly B-toloc.city_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 
 list O
@@ -2137,7 +2137,7 @@ to O
 baltimore B-toloc.city_name
 arriving O
 on O
-MONTH B-arrive_date.month_name
+$month$ B-arrive_date.month_name
 first B-arrive_date.day_number
 
 list O
@@ -2148,7 +2148,7 @@ dallas B-fromloc.city_name
 to O
 baltimore B-toloc.city_name
 arriving O
-MONTH B-arrive_date.month_name
+$month$ B-arrive_date.month_name
 first B-arrive_date.day_number
 
 list O
@@ -2160,7 +2160,7 @@ to O
 baltimore B-toloc.city_name
 arriving O
 on O
-MONTH B-arrive_date.month_name
+$month$ B-arrive_date.month_name
 first B-arrive_date.day_number
 
 list O
@@ -2188,7 +2188,7 @@ international O
 flights O
 use O
 aircraft O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 how O
 many O
@@ -2333,7 +2333,7 @@ are O
 available O
 on O
 dl B-airline_code
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 which O
 <UNK> O
 arrives O
@@ -2341,7 +2341,7 @@ in O
 san B-toloc.city_name
 francisco I-toloc.city_name
 at O
-$NUM$$NUM$$NUM$ B-arrive_time.time
+$num$$num$$num$ B-arrive_time.time
 am I-arrive_time.time
 
 show O
@@ -2359,7 +2359,7 @@ show O
 me O
 delta O
 flight O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 list O
 the O
@@ -2481,7 +2481,7 @@ in O
 los B-toloc.city_name
 angeles I-toloc.city_name
 after B-arrive_time.time_relative
-$NUM$$NUM$ B-arrive_time.time
+$num$$num$ B-arrive_time.time
 am I-arrive_time.time
 
 how O
@@ -2630,7 +2630,7 @@ charlotte B-toloc.city_name
 on O
 saturday B-arrive_date.day_name
 at O
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 what O
@@ -2802,7 +2802,7 @@ st. B-toloc.city_name
 louis I-toloc.city_name
 close B-arrive_time.time_relative
 to O
-$NUM$$NUM$$NUM$ B-arrive_time.time
+$num$$num$$num$ B-arrive_time.time
 pm I-arrive_time.time
 on O
 tuesday B-arrive_date.day_name
@@ -2819,7 +2819,7 @@ paul I-toloc.city_name
 which O
 depart O
 after B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 thursday B-depart_date.day_name
 morning B-depart_time.period_of_day
@@ -2916,7 +2916,7 @@ to O
 los B-toloc.city_name
 angeles I-toloc.city_name
 after B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 
 list O
@@ -2926,7 +2926,7 @@ for O
 american O
 airlines O
 flight O
-$NUM$$NUM$ O
+$num$$num$ O
 from O
 jfk B-fromloc.airport_code
 to O
@@ -3145,7 +3145,7 @@ from O
 charlotte B-fromloc.airport_name
 airport I-fromloc.airport_name
 at O
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 list O
@@ -3158,7 +3158,7 @@ from O
 charlotte B-fromloc.airport_name
 airport I-fromloc.airport_name
 around B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 list O
@@ -3334,7 +3334,7 @@ st. B-toloc.city_name
 louis I-toloc.city_name
 tuesday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$ B-depart_time.time
 pm I-depart_time.time
 flights O
 
@@ -3345,7 +3345,7 @@ st. B-toloc.city_name
 paul I-toloc.city_name
 thursday B-depart_date.day_name
 after B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 
 st. B-fromloc.city_name
@@ -3363,7 +3363,7 @@ city I-toloc.city_name
 arrive O
 monday B-arrive_date.day_name
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 kansas B-fromloc.city_name
@@ -3374,7 +3374,7 @@ flight O
 arrive O
 wednesday B-arrive_date.day_name
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 cleveland B-fromloc.city_name
@@ -3389,7 +3389,7 @@ to O
 cleveland B-toloc.city_name
 sunday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 
 first B-class_type
 class I-class_type
@@ -3654,7 +3654,7 @@ leaving O
 wednesday B-depart_date.day_name
 afternoon B-depart_time.period_of_day
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 show O
@@ -3681,7 +3681,7 @@ class I-class_type
 that O
 leave O
 before B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 
 show O
@@ -3698,7 +3698,7 @@ detroit B-toloc.city_name
 that O
 arrives O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 show O
@@ -3807,7 +3807,7 @@ francisco I-fromloc.city_name
 to O
 houston B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 eighth I-depart_date.day_number
 
@@ -3824,7 +3824,7 @@ francisco I-fromloc.city_name
 to O
 houston B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 eighth I-depart_date.day_number
 
@@ -3949,7 +3949,7 @@ on O
 friday B-depart_date.day_name
 afternoon B-depart_time.period_of_day
 in O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 from O
 new B-fromloc.city_name
 york I-fromloc.city_name
@@ -4060,7 +4060,7 @@ are O
 there O
 on O
 flight O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 from O
 milwaukee B-fromloc.city_name
 to O
@@ -4211,7 +4211,7 @@ mean O
 what O
 does O
 ap O
-$NUM$$NUM$ O
+$num$$num$ O
 mean O
 
 what O
@@ -4250,7 +4250,7 @@ diego I-toloc.city_name
 what O
 does O
 ap O
-$NUM$$NUM$ O
+$num$$num$ O
 mean O
 
 can O
@@ -4635,7 +4635,7 @@ arrive O
 as O
 soon O
 after B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 as O
 possible O
@@ -4689,7 +4689,7 @@ lake I-toloc.city_name
 city I-toloc.city_name
 leaving O
 after B-depart_time.time_relative
-$NUM$$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$$num$ B-depart_time.time
 wednesday B-depart_date.day_name
 
 list O
@@ -4729,7 +4729,7 @@ to O
 washington B-toloc.city_name
 dc B-toloc.state_code
 before B-depart_time.time_relative
-$NUM$$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$$num$ B-depart_time.time
 
 list O
 flights O
@@ -4740,7 +4740,7 @@ to O
 pittsburgh B-toloc.city_name
 leaving O
 after B-depart_time.time_relative
-$NUM$$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$$num$ B-depart_time.time
 
 list O
 flights O
@@ -4975,7 +4975,7 @@ arrives O
 no B-arrive_time.time_relative
 later I-arrive_time.time_relative
 than I-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -4991,7 +4991,7 @@ arrives O
 no B-arrive_time.time_relative
 later I-arrive_time.time_relative
 than I-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -5006,7 +5006,7 @@ arriving O
 in O
 seattle B-toloc.city_name
 at O
-$NUM$$NUM$$NUM$$NUM$ B-arrive_time.time
+$num$$num$$num$$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -5668,7 +5668,7 @@ indianapolis B-toloc.city_name
 leaving O
 monday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 
 i O
@@ -5683,7 +5683,7 @@ indianapolis B-toloc.city_name
 leaving O
 monday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 
 is O
@@ -5727,7 +5727,7 @@ to O
 milwaukee B-toloc.city_name
 wednesday B-depart_date.day_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -5745,7 +5745,7 @@ to O
 milwaukee B-toloc.city_name
 wednesday B-depart_date.day_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -5762,7 +5762,7 @@ milwaukee B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -5779,7 +5779,7 @@ milwaukee B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -5824,7 +5824,7 @@ on O
 monday B-depart_date.day_name
 departing O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 is O
@@ -5852,7 +5852,7 @@ phoenix B-toloc.city_name
 departing O
 wednesday B-depart_date.day_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 is O
@@ -5879,7 +5879,7 @@ on O
 wednesday B-depart_date.day_name
 departing O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -5893,7 +5893,7 @@ thursday B-depart_date.day_name
 departing O
 <UNK> B-depart_time.time_relative
 to I-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 from O
 oakland B-fromloc.city_name
@@ -5919,7 +5919,7 @@ city I-toloc.city_name
 on O
 thursday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 
 i O
@@ -5941,7 +5941,7 @@ on O
 thursday B-depart_date.day_name
 departing O
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 
 i O
@@ -5955,7 +5955,7 @@ departing O
 on O
 thursday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 from O
 oakland B-fromloc.city_name
@@ -6024,7 +6024,7 @@ salt B-toloc.city_name
 lake I-toloc.city_name
 city I-toloc.city_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 thursday B-depart_date.day_name
 morning B-depart_time.period_of_day
@@ -6311,7 +6311,7 @@ what O
 are O
 restrictions O
 ap O
-$NUM$$NUM$ O
+$num$$num$ O
 
 please O
 show O
@@ -6327,7 +6327,7 @@ one B-ow_trip
 way I-ow_trip
 leaving O
 before B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 
 now O
@@ -6344,7 +6344,7 @@ seattle B-toloc.city_name
 that O
 arrive O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 in O
 seattle B-toloc.city_name
@@ -6460,7 +6460,7 @@ milwaukee B-fromloc.city_name
 to O
 orlando B-toloc.city_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 on O
 wednesday B-depart_date.day_name
@@ -6638,7 +6638,7 @@ chicago B-toloc.city_name
 one B-ow_trip
 way I-ow_trip
 before B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 
 what O
@@ -6658,7 +6658,7 @@ orlando B-toloc.city_name
 one B-ow_trip
 way I-ow_trip
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 wednesday B-depart_date.day_name
 
@@ -6668,7 +6668,7 @@ milwaukee B-fromloc.city_name
 to O
 atlanta B-toloc.city_name
 before B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 daily B-flight_days
 
@@ -6798,7 +6798,7 @@ indianapolis B-fromloc.city_name
 to O
 memphis B-toloc.city_name
 before B-depart_time.time_relative
-$NUM$$NUM$ B-depart_time.time
+$num$$num$ B-depart_time.time
 am I-depart_time.time
 on O
 any O
@@ -7261,7 +7261,7 @@ friday B-depart_date.day_name
 list O
 flights O
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 am I-depart_time.time
 from O
 cincinnati B-fromloc.city_name
@@ -7284,7 +7284,7 @@ tampa B-fromloc.city_name
 to O
 cincinnati B-toloc.city_name
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 list O
@@ -7674,7 +7674,7 @@ indianapolis B-fromloc.city_name
 to O
 orlando B-toloc.city_name
 around B-depart_time.time_relative
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 fifth I-depart_date.day_number
 
@@ -7732,7 +7732,7 @@ indianapolis B-fromloc.city_name
 to O
 orlando B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 fifth I-depart_date.day_number
 
@@ -7745,7 +7745,7 @@ indianapolis B-fromloc.city_name
 to O
 orlando B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 seventh I-depart_date.day_number
 
@@ -7817,7 +7817,7 @@ pittsburgh B-fromloc.city_name
 to O
 cleveland B-toloc.city_name
 under B-cost_relative
-$NUM$$NUM$$NUM$ B-fare_amount
+$num$$num$$num$ B-fare_amount
 dollars I-fare_amount
 
 how O
@@ -7858,7 +7858,7 @@ dallas B-fromloc.city_name
 to O
 houston B-toloc.city_name
 after B-depart_time.time_relative
-$NUM$$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$$num$ B-depart_time.time
 am I-depart_time.time
 
 houston B-fromloc.city_name
@@ -7870,7 +7870,7 @@ midnight B-depart_time.period_of_day
 indianapolis B-fromloc.city_name
 to O
 orlando B-toloc.city_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 seventh I-depart_date.day_number
 
@@ -7885,7 +7885,7 @@ the O
 twenty B-depart_date.day_number
 seventh I-depart_date.day_number
 of O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 
 cheapest B-cost_relative
 fare O
@@ -7896,7 +7896,7 @@ indianapolis B-fromloc.city_name
 to O
 orlando B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 seventh I-depart_date.day_number
 
@@ -7907,7 +7907,7 @@ on O
 wednesday B-depart_date.day_name
 arriving O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 miami B-fromloc.city_name
@@ -8030,9 +8030,9 @@ san B-toloc.city_name
 francisco I-toloc.city_name
 arriving O
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 how O
@@ -8096,7 +8096,7 @@ san B-toloc.city_name
 francisco I-toloc.city_name
 leaving O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 o'clock I-depart_time.time
 
 please O
@@ -8415,10 +8415,10 @@ flights O
 leaving O
 denver B-fromloc.city_name
 between O
-$NUM$ B-depart_time.start_time
+$num$ B-depart_time.start_time
 pm I-depart_time.start_time
 and O
-$NUM$ B-depart_time.end_time
+$num$ B-depart_time.end_time
 pm I-depart_time.end_time
 
 what O
@@ -8429,7 +8429,7 @@ capacity O
 on O
 the O
 aircraft O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 what O
 is O
@@ -8509,9 +8509,9 @@ arriving O
 in O
 denver B-toloc.city_name
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 what O
@@ -8542,14 +8542,14 @@ seating O
 capacity O
 of O
 a O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 how O
 many O
 people O
 will O
 a O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 <UNK> O
 
 how O
@@ -8559,7 +8559,7 @@ can O
 fly O
 on O
 a O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 list O
 all O
@@ -8571,9 +8571,9 @@ arriving O
 in O
 denver B-toloc.city_name
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 list O
@@ -8586,9 +8586,9 @@ arriving O
 in O
 denver B-toloc.city_name
 from O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 to O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 show O
@@ -8602,10 +8602,10 @@ arriving O
 in O
 denver B-toloc.city_name
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 pm I-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 what O
@@ -8615,7 +8615,7 @@ seating O
 capacity O
 of O
 the O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 tell O
 me O
@@ -8649,7 +8649,7 @@ seating O
 capacity O
 of O
 the O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 
 what O
 is O
@@ -8678,9 +8678,9 @@ or O
 leaving O
 denver B-city_name
 between O
-$NUM$ B-depart_time.start_time
+$num$ B-depart_time.start_time
 and O
-$NUM$ B-depart_time.end_time
+$num$ B-depart_time.end_time
 pm I-depart_time.end_time
 
 list O
@@ -8690,9 +8690,9 @@ arriving O
 in O
 denver B-toloc.city_name
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 list O
@@ -8707,9 +8707,9 @@ arriving O
 in O
 denver B-toloc.city_name
 between O
-$NUM$ B-arrive_time.start_time
+$num$ B-arrive_time.start_time
 and O
-$NUM$ B-arrive_time.end_time
+$num$ B-arrive_time.end_time
 pm I-arrive_time.end_time
 
 please O
@@ -8751,7 +8751,7 @@ if O
 i O
 arrive O
 at O
-$NUM$$NUM$$NUM$ O
+$num$$num$$num$ O
 in O
 the O
 morning B-period_of_day
@@ -8847,7 +8847,7 @@ to O
 nashville B-toloc.city_name
 leaving O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 on O
 wednesday B-depart_date.day_name
@@ -8877,7 +8877,7 @@ noon B-depart_time.period_of_day
 and O
 arriving O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 how O
@@ -9104,7 +9104,7 @@ american O
 flight O
 leaving O
 at O
-$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$ B-depart_time.time
 pm I-depart_time.time
 
 i O
@@ -9359,7 +9359,7 @@ arrives O
 on O
 saturday B-arrive_date.day_name
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -9377,7 +9377,7 @@ arrives O
 on O
 saturday B-arrive_date.day_name
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -9394,7 +9394,7 @@ chicago B-toloc.city_name
 that O
 arrives O
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -9424,7 +9424,7 @@ california B-toloc.state_name
 which O
 leave O
 after B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 what O
@@ -9533,7 +9533,7 @@ city I-fromloc.city_name
 to O
 chicago B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixteenth I-depart_date.day_number
 
 please O
@@ -9547,7 +9547,7 @@ to O
 kansas B-toloc.city_name
 city I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventeenth I-depart_date.day_number
 
 please O
@@ -9561,7 +9561,7 @@ city I-fromloc.city_name
 to O
 chicago B-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 sixteenth I-depart_date.day_number
 
 please O
@@ -9575,7 +9575,7 @@ to O
 kansas B-toloc.city_name
 city I-toloc.city_name
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventeenth I-depart_date.day_number
 
 i O
@@ -9607,7 +9607,7 @@ saturday B-depart_date.day_name
 before B-arrive_time.time_relative
 arriving O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 can O
@@ -9624,7 +9624,7 @@ york I-toloc.city_name
 on O
 saturday B-depart_date.day_name
 before B-depart_time.time_relative
-$NUM$ B-depart_time.time
+$num$ B-depart_time.time
 pm I-depart_time.time
 
 can O
@@ -9646,7 +9646,7 @@ next B-depart_date.date_relative
 saturday B-depart_date.day_name
 arriving O
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -9664,7 +9664,7 @@ american O
 airlines O
 arriving O
 around B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 i O
@@ -9694,12 +9694,12 @@ to O
 chicago B-toloc.city_name
 on O
 wednesday B-depart_date.day_name
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 twenty I-depart_date.day_number
 sixth I-depart_date.day_number
 arriving O
 at O
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 yes O
@@ -9795,7 +9795,7 @@ newark B-fromloc.city_name
 to O
 nashville B-toloc.city_name
 around B-depart_time.time_relative
-$NUM$$NUM$$NUM$ B-depart_time.time
+$num$$num$$num$ B-depart_time.time
 pm I-depart_time.time
 
 please O
@@ -9821,10 +9821,10 @@ francisco O
 the O
 price O
 of O
-$NUM$$NUM$$NUM$ B-fare_amount
+$num$$num$$num$ B-fare_amount
 dollars I-fare_amount
 for O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 tenth I-depart_date.day_number
 
 are O
@@ -9832,7 +9832,7 @@ there O
 any O
 flights O
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 tenth I-depart_date.day_number
 from O
 burbank B-fromloc.city_name
@@ -9854,7 +9854,7 @@ stop O
 in O
 chicago O
 on O
-MONTH B-depart_date.month_name
+$month$ B-depart_date.month_name
 seventeenth I-depart_date.day_number
 one B-ow_trip
 way I-ow_trip
@@ -10028,7 +10028,7 @@ arrive O
 next B-arrive_date.date_relative
 saturday B-arrive_date.day_name
 before B-arrive_time.time_relative
-$NUM$ B-arrive_time.time
+$num$ B-arrive_time.time
 pm I-arrive_time.time
 
 find O

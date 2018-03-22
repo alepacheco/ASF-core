@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 UNK = "$UNK$"
-NUM = "$NUM$"
+NUM = "$num$"
 NONE = "O"
 
 def get_trimmed_glove_vectors():
