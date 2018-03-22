@@ -76,19 +76,21 @@ def minibatches(data, minibatch_size):
     if len(x_batch) != 0:
         yield x_batch, y_batch
 
-def pad_sequences(sequences, pad_tok, nlevels=1):
-    def _pad_sequences(sequences, pad_tok, max_length):
-        sequence_padded, sequence_length = [], []
-        for seq in sequences:
-            seq = list(seq)
-            seq_ = seq[:max_length] + [pad_tok]*max(max_length - len(seq), 0)
-            sequence_padded +=  [seq_]
-            sequence_length += [min(len(seq), max_length)]
+def _pad_sequences(sequences, pad_tok, max_length):
+    sequence_padded, sequence_length = [], []
+    for seq in sequences:
+        seq = list(seq)
+        seq_ = seq[:max_length] + [pad_tok]*max(max_length - len(seq), 0)
+        sequence_padded +=  [seq_]
+        sequence_length += [min(len(seq), max_length)]
 
-        return sequence_padded, sequence_length
+    return sequence_padded, sequence_length
+
+
+def pad_sequences(sequences, pad_tok, nlevels=1):
 
     if nlevels == 1:
-        max_length = max(map(lambda x : len(x), sequences))
+        max_length = max(map(lambda x : len(x), sequences)) # ffffffffffffffffff
         sequence_padded, sequence_length = _pad_sequences(sequences,
                                             pad_tok, max_length)
 
@@ -129,7 +131,7 @@ def get_feed_dict(words, _labels=None, _lr=None, _dropout=None):
         feed[word_lengths] = _word_lengths
 
     if _labels is not None:
-        _labels, _ = pad_sequences(labels, 0)
+        _labels, _ = pad_sequences(_labels, 0)
         feed[labels] = _labels
 
     if lr is not None:
@@ -168,12 +170,12 @@ def run_evaluate(test):
     return {"acc": 100*acc, "f1": 100*f1}
 
 def predict_batch(words):
-    fd, sequence_lengths = get_feed_dict(words, dropout=1.0)
+    fd, sequence_lengths = get_feed_dict(words, _dropout=1.0)
 
     # get tag scores and transition params of CRF
     viterbi_sequences = []
-    logits, trans_params = self.sess.run(
-            [self.logits, self.trans_params], feed_dict=fd)
+    logits, trans_params = sess.run(
+            [logits, trans_params], feed_dict=fd)
 
     # iterate over the sentences because no batching in vitervi_decode
     for logit, sequence_length in zip(logits, sequence_lengths):
@@ -223,11 +225,9 @@ def run_epoch(train, dev, epoch):
 
     # iterate over dataset
     for i, (words, labels) in enumerate(minibatches(train, batch_size)):
-        fd, _ = get_feed_dict(words, labels, lr,
-                dropout)
+        fd, _ = get_feed_dict(words, labels, lr, 0.5) # dropout
 
-        _, train_loss, summary = sess.run(
-                [train_op, loss, merged], feed_dict=fd)
+        _, train_loss, summary = sess.run([train_op, loss], feed_dict=fd)
 
     metrics = run_evaluate(dev)
     msg = " - ".join(["{} {:04.2f}".format(k, v)
@@ -309,8 +309,9 @@ with tf.variable_scope("words"):
 
 # get char embeddings matrix
 with tf.variable_scope("chars"):
+    # get char embeddings matrix
     _char_embeddings = tf.get_variable(
-            name="char_embeddings",
+            name="_char_embeddings",
             dtype=tf.float32,
             shape=[nchars, dim_char])
     char_embeddings = tf.nn.embedding_lookup(_char_embeddings,
@@ -374,14 +375,6 @@ log_likelihood, trans_params = tf.contrib.crf.crf_log_likelihood(
 trans_params = trans_params # need to evaluate it for decoding
 loss = tf.reduce_mean(-log_likelihood)
 
-
-losses = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=labels)
-# shape = (batch, sentence, nclasses)
-mask = tf.sequence_mask(sequence_lengths)
-# apply mask
-losses = tf.boolean_mask(losses, mask)
-
-loss = tf.reduce_mean(losses)
 
 optimizer = tf.train.AdamOptimizer(lr)
 train_op = optimizer.minimize(loss)
