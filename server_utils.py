@@ -61,7 +61,7 @@ def preprocessTimes(sentence):
     return ''.join(sentence)
 
 def encodeDigits(sentence):
-    return ''.join(list(map(lambda x: 'DIGIT' if x.isdigit() else x, sentence)))
+    return ''.join(list(map(lambda x: '$NUM$' if x.isdigit() else x, sentence)))
 
 def encodeMonths(sentence):
     return re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', 'MONTH', sentence)
