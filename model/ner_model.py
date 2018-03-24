@@ -4,7 +4,6 @@ import tensorflow as tf
 import progressbar
 
 from .data_utils import minibatches, pad_sequences, get_chunks
-from .general_utils import Progbar
 
 
 class NERModel():
@@ -16,29 +15,9 @@ class NERModel():
         self.sess.run(init)
 
 
-    def add_train_op(self, lr_method, lr, loss, clip=-1):
-        """Defines self.train_op that performs an update on a batch
-
-        Args:
-            lr_method: (string) sgd method, for example "adam"
-            lr: (tf.placeholder) tf.float32, learning rate
-            loss: (tensor) tf.float32 loss to minimize
-            clip: (python float) clipping of gradient. If < 0, no clipping
-
-        """
-        _lr_m = lr_method.lower() # lower to make sure
-
+    def add_train_op(self, lr, loss, clip=-1):
         with tf.variable_scope("train_step"):
-            if _lr_m == 'adam': # sgd method
-                optimizer = tf.train.AdamOptimizer(lr)
-            elif _lr_m == 'adagrad':
-                optimizer = tf.train.AdagradOptimizer(lr)
-            elif _lr_m == 'sgd':
-                optimizer = tf.train.GradientDescentOptimizer(lr)
-            elif _lr_m == 'rmsprop':
-                optimizer = tf.train.RMSPropOptimizer(lr)
-            else:
-                raise NotImplementedError("Unknown method {}".format(_lr_m))
+            optimizer = tf.train.AdamOptimizer(lr)
 
             if clip > 0: # gradient clipping if clip is positive
                 grads, vs     = zip(*optimizer.compute_gradients(loss))
@@ -225,26 +204,11 @@ class NERModel():
 
 
     def add_word_embeddings_op(self):
-        """Defines self.word_embeddings
-
-        If self.config.embeddings is not None and is a np array initialized
-        with pre-trained word vectors, the word embeddings is just a look-up
-        and we don't train the vectors. Otherwise, a random matrix with
-        the correct shape is initialized.
-        """
         with tf.variable_scope("words"):
-            if self.config.embeddings is None:
-                self.logger.info("WARNING: randomly initializing word vectors")
-                _word_embeddings = tf.get_variable(
-                        name="_word_embeddings",
-                        dtype=tf.float32,
-                        shape=[self.config.nwords, self.config.dim_word])
-            else:
-                _word_embeddings = tf.Variable(
-                        self.config.embeddings,
-                        name="_word_embeddings",
-                        dtype=tf.float32,
-                        trainable=self.config.train_embeddings)
+            _word_embeddings = tf.Variable(
+                    self.config.embeddings,
+                    name="_word_embeddings",
+                    dtype=tf.float32,                        trainable=self.config.train_embeddings)
 
             word_embeddings = tf.nn.embedding_lookup(_word_embeddings,
                     self.word_ids, name="word_embeddings")
@@ -287,11 +251,6 @@ class NERModel():
 
 
     def add_logits_op(self):
-        """Defines self.logits
-
-        For each word in each sentence of the batch, it corresponds to a vector
-        of scores, of dimension equal to the number of tags.
-        """
         with tf.variable_scope("bi-lstm"):
             cell_fw = tf.contrib.rnn.LSTMCell(self.config.hidden_size_lstm)
             cell_bw = tf.contrib.rnn.LSTMCell(self.config.hidden_size_lstm)
@@ -314,51 +273,25 @@ class NERModel():
             self.logits = tf.reshape(pred, [-1, nsteps, self.config.ntags])
 
 
-    def add_pred_op(self):
-        """Defines self.labels_pred
-
-        This op is defined only in the case where we don't use a CRF since in
-        that case we can make the prediction "in the graph" (thanks to tf
-        functions in other words). With theCRF, as the inference is coded
-        in python and not in pure tensroflow, we have to make the prediciton
-        outside the graph.
-        """
-        if not self.config.use_crf:
-            self.labels_pred = tf.cast(tf.argmax(self.logits, axis=-1),
-                    tf.int32)
-
-
     def add_loss_op(self):
-        """Defines the loss"""
-        if self.config.use_crf:
-            log_likelihood, trans_params = tf.contrib.crf.crf_log_likelihood(
-                    self.logits, self.labels, self.sequence_lengths)
-            self.trans_params = trans_params # need to evaluate it for decoding
-            self.loss = tf.reduce_mean(-log_likelihood)
-        else:
-            losses = tf.nn.sparse_softmax_cross_entropy_with_logits(
-                    logits=self.logits, labels=self.labels)
-            mask = tf.sequence_mask(self.sequence_lengths)
-            losses = tf.boolean_mask(losses, mask)
-            self.loss = tf.reduce_mean(losses)
+        log_likelihood, trans_params = tf.contrib.crf.crf_log_likelihood(
+                self.logits, self.labels, self.sequence_lengths)
+        self.trans_params = trans_params # need to evaluate it for decoding
+        self.loss = tf.reduce_mean(-log_likelihood)
 
         # for tensorboard
         tf.summary.scalar("loss", self.loss)
 
 
     def build(self):
-        # NER specific functions
         self.add_placeholders()
         self.add_word_embeddings_op()
         self.add_logits_op()
-        self.add_pred_op()
         self.add_loss_op()
 
-        # Generic functions that add training op and initialize session
-        self.add_train_op(self.config.lr_method, self.lr, self.loss,
+        self.add_train_op(self.lr, self.loss,
                 self.config.clip)
-        self.initialize_session() # now self.sess is defined and vars are init
-
+        self.initialize_session()
 
     def predict_batch(self, words):
         """
@@ -372,25 +305,18 @@ class NERModel():
         """
         fd, sequence_lengths = self.get_feed_dict(words, dropout=1.0)
 
-        if self.config.use_crf:
-            # get tag scores and transition params of CRF
-            viterbi_sequences = []
-            logits, trans_params = self.sess.run(
-                    [self.logits, self.trans_params], feed_dict=fd)
+        # get tag scores and transition params of CRF
+        viterbi_sequences = []
+        logits, trans_params = self.sess.run(
+                [self.logits, self.trans_params], feed_dict=fd)
 
-            # iterate over the sentences because no batching in vitervi_decode
-            for logit, sequence_length in zip(logits, sequence_lengths):
-                logit = logit[:sequence_length] # keep only the valid steps
-                viterbi_seq, viterbi_score = tf.contrib.crf.viterbi_decode(
-                        logit, trans_params)
-                viterbi_sequences += [viterbi_seq]
-
-            return viterbi_sequences, sequence_lengths
-
-        else:
-            labels_pred = self.sess.run(self.labels_pred, feed_dict=fd)
-
-            return labels_pred, sequence_lengths
+        # iterate over the sentences because no batching in vitervi_decode
+        for logit, sequence_length in zip(logits, sequence_lengths):
+            logit = logit[:sequence_length] # keep only the valid steps
+            viterbi_seq, viterbi_score = tf.contrib.crf.viterbi_decode(
+                    logit, trans_params)
+            viterbi_sequences += [viterbi_seq]
+        return viterbi_sequences, sequence_lengths
 
 
     def run_epoch(self, train, dev, epoch):
