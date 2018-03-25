@@ -64,10 +64,11 @@ def validateTime(time):
 
 def parseLabels(sentence, prediction):
     parsed = {
-        'type': None,
+        'type': 'ow_trip',
         'departure': '',
         'destination': '',
         'departureDate': '',
+        'returnDate': '',
         'departureTime': ''
     }
 
@@ -79,20 +80,32 @@ def parseLabels(sentence, prediction):
             parsed['type'] = 'round_trip'
         elif label == "B-ow_trip" or label == "I-ow_trip":
             parsed['type'] = 'ow_trip'
+
         elif label == "B-toloc.city_name":
             parsed['destination'] = word
         elif label == "I-toloc.city_name":
             parsed['destination'] += ' ' + word
+
         elif label == "B-fromloc.city_name":
             parsed['departure'] = word
         elif label == "I-fromloc.city_name":
             parsed['departure'] += ' ' + word
+
         elif label.startswith("B-depart_date"):
-            parsed['departureDate'] = word
+            parsed['departureDate'] += ' ' + word
+            parsed['type'] = 'round_trip'
         elif label.startswith("I-depart_date"):
             parsed['departureDate'] += ' ' + word
+            parsed['type'] = 'round_trip'
+
+        elif label.startswith("B-return_date"):
+            parsed['returnDate'] += ' ' + word
+        elif label.startswith("I-return_date"):
+            parsed['returnDate'] += ' ' + word
+
         elif label.startswith("B-depart_time"):
             parsed['departureDate'] += ' ' + word
+            # in case date number gets interpreted as time
             if validateTime(parsed['departureTime']) is None:
                 parsed['departureTime'] = word
         elif label.startswith("I-depart_time"):
@@ -102,6 +115,36 @@ def parseLabels(sentence, prediction):
     parsed['departure'] = getIATA(parsed['departure'])
     parsed['destination'] = getIATA(parsed['destination'])
     parsed['departureDate'] = parseDates(parsed['departureDate'])
+    parsed['returnDate'] = parseDates(parsed['returnDate'])
     parsed['departureTime'] = validateTime(parsed['departureTime'])
 
     return parsed
+
+
+def align_data(data):
+    """Given dict with lists, creates aligned strings
+
+    Adapted from Assignment 3 of CS224N
+
+    Args:
+        data: (dict) data["x"] = ["I", "love", "you"]
+              (dict) data["y"] = ["O", "O", "O"]
+
+    Returns:
+        data_aligned: (dict) data_align["x"] = "I love you"
+                           data_align["y"] = "O O    O  "
+
+    """
+    spacings = [max([len(seq[i]) for seq in data.values()])
+                for i in range(len(data[list(data.keys())[0]]))]
+    data_aligned = dict()
+
+    # for each entry, create aligned string
+    for key, seq in data.items():
+        str_aligned = ""
+        for token, spacing in zip(seq, spacings):
+            str_aligned += token + " " * (spacing - len(token) + 1)
+
+        data_aligned[key] = str_aligned
+
+    return data_aligned

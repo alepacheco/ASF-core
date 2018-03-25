@@ -23,8 +23,13 @@ def parse():
     sentence = sentence.split(' ')
 
     parsed = server_utils.parseLabels(sentence, prediction)
+    to_print = server_utils.align_data({"input": sentence, "output": prediction})
 
-    return json.dumps(prediction) + '\n' +json.dumps(parsed) + '\n'
+    for key, seq in to_print.items():
+        print(seq)
+
+
+    return json.dumps(parsed) + '\n'
 
 if __name__ == '__main__':
    main()
