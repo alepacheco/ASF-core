@@ -1,6 +1,6 @@
 # Model overview
 
-![](https://i.imgur.com/l3xpUY0.png)
+![](https://docs.google.com/drawings/d/e/2PACX-1vRsJ0BZjt8btq-1VmAa9Y3MU3cuxKc9FSrBrS5k2nctFqdMmNc-h1gFQiVYO8Fph8J8s_MmwFtGxRKS/pub?w=718&amp;h=656)
 
 # Getting started
 
