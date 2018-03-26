@@ -9,21 +9,6 @@ MONTH = "$month$"
 IATA = "$iata$"
 NONE = "O"
 
-
-# special error message
-class MyIOError(Exception):
-    def __init__(self, filename):
-        # custom error message
-        message = """
-ERROR: Unable to locate file {}.
-
-FIX: Have you tried running python build_data.py first?
-This will build vocab file from your train, test and dev sets and
-trimm your word vectors.
-""".format(filename)
-        super(MyIOError, self).__init__(message)
-
-
 class CoNLLDataset(object):
     """Class that iterates over CoNLL Dataset
 
@@ -192,7 +177,7 @@ def load_vocab(filename):
                 d[word] = idx
 
     except IOError:
-        raise MyIOError(filename)
+        raise Exception('Could not find: ' + str(filename) + ' Remember to run python3 build_data.py.')
     return d
 
 
@@ -233,7 +218,7 @@ def get_trimmed_glove_vectors(filename):
             return data["embeddings"]
 
     except IOError:
-        raise MyIOError(filename)
+        raise Exception('Could not find: ' + str(filename) + ' Remember to run python3 build_data.py.')
 
 
 def get_processing_word(vocab_words=None, vocab_chars=None,
@@ -267,7 +252,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
         if replace_digits:
             word = ''.join(list(map(lambda x: NUM if x.isdigit() else x, word)))
         if encode_iatas:
-            word = encodeIatas(word)
+            word = encode_iatas(word)
 
         # 2. get id of word
         if vocab_words is not None:
@@ -289,7 +274,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
     return f
 
 
-def encodeIatas(sentence):
+def encode_iatas(sentence):
     def validateIATA(iata):
         code = iata.strip()
         with open('data/IATAs.csv', 'rt') as f:

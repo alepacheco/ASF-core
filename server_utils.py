@@ -9,10 +9,10 @@ def preprocess(sentence):
     encoded = preprocessTimes(sentence)
     return encoded.split(' ')
 
-def getIATA(city):
+def getIATA(city_name):
     conn = http.client.HTTPSConnection("www.google.es")
     request = {
-      '2': city
+      '2': city_name
     }
     payload = json.dumps({
       '1':[

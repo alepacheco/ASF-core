@@ -19,17 +19,15 @@ make run
 The training data must be in the IOB format
 
 ```
-John B-PER
-lives O
-in O
-New B-LOC
-York I-LOC
-. O
-
-This O
-is O
-another O
-sentence
+i O
+need O
+a O
+flight O
+from O
+memphis B-fromloc.city_name
+to O
+las B-toloc.city_name
+vegas I-toloc.city_name
 ```
 
 # Usage
@@ -61,15 +59,18 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 - Split Dataset
 - Generate more data
 - Add lexicon of cities, dates and times
-- Move from BIO labels to BIOES
+- Move from BIO labels to BIOES (Begin, Inside, Outside, End, Single)
 - Replace multi-digit numbers same as single-digit ones
 - Split word before and after digit (ex: $5, 5pm)
 - Try glove with 50d
 - Explore FastText model
-- Reduce out of training words
+- Reduce out-of-training words
 
-# Credits
+# Credits / Resources
 https://arxiv.org/pdf/1511.08308.pdf
+
 https://arxiv.org/pdf/1603.01354.pdf
+
 https://guillaumegenthial.github.io/sequence-tagging-with-tensorflow.html
+
 https://github.com/guillaumegenthial/sequence_tagging
