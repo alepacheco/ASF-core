@@ -56,6 +56,16 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 }
 ```
 
+# Possible improvements
+- Improve char embedding Model
+- Split Dataset
+- Generate more data
+- Add lexicon of cities, dates and times
+- Move from BIO labels to BIOES
+- Replace multi-digit numbers same as single-digit ones
+- Split word before and after digit (ex: $5, 5pm)
+- Try glove with 50d
+- Fastext model?
 
 # Credits
 https://arxiv.org/pdf/1511.08308.pdf
