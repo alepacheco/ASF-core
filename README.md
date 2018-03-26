@@ -1,3 +1,7 @@
+# Model overview
+
+![](https://i.imgur.com/l3xpUY0.png)
+
 # Getting started
 
 1. Download the GloVe vectors with
@@ -53,16 +57,7 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 ```
 
 
-# Next steps
-
-- [ ] Keep dataset clean
-- [X] Get IATA codes for cities
-- [X] Fix '10am' interpretation to '10 am'
-- [X] Fix dates digits as time
-- [ ] Remove unused labels
-  - [ ] returnDates
-
-
 # Credits
+https://arxiv.org/pdf/1511.08308.pdf
 https://guillaumegenthial.github.io/sequence-tagging-with-tensorflow.html
 https://github.com/guillaumegenthial/sequence_tagging
