@@ -65,9 +65,11 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
 - Replace multi-digit numbers same as single-digit ones
 - Split word before and after digit (ex: $5, 5pm)
 - Try glove with 50d
-- Fastext model?
+- Explore FastText model
+- Reduce out of training words
 
 # Credits
 https://arxiv.org/pdf/1511.08308.pdf
+https://arxiv.org/pdf/1603.01354.pdf
 https://guillaumegenthial.github.io/sequence-tagging-with-tensorflow.html
 https://github.com/guillaumegenthial/sequence_tagging
