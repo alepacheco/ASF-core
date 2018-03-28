@@ -224,7 +224,7 @@ def get_trimmed_glove_vectors(filename):
 def get_processing_word(vocab_words=None, vocab_chars=None,
                     lowercase=False, chars=False, allow_unk=True,
                     replace_month=True, replace_digits=True,
-                    encode_iatas=True):
+                    _encode_iatas=True):
     """Return lambda function that transform a word (string) into list,
     or tuple of (list, id) of int corresponding to the ids of the word and
     its corresponding characters.
@@ -251,7 +251,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
             word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', MONTH, word)
         if replace_digits:
             word = ''.join(list(map(lambda x: NUM if x.isdigit() else x, word)))
-        if encode_iatas:
+        if _encode_iatas:
             word = encode_iatas(word)
 
         # 2. get id of word
