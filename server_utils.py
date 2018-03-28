@@ -94,7 +94,8 @@ def parseLabels(sentence, prediction):
         'departure': '',
         'destination': '',
         'departureDate': '',
-        'departureTime': ''
+        'departureTime': '',
+        'raw': prediction
     }
 
     for i in range(len(prediction)):

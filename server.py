@@ -23,8 +23,9 @@ def parse():
     sentence = sentence.split(' ')
 
     parsed = server_utils.parseLabels(sentence, prediction)
-
-    return json.dumps(prediction) + '\n' +json.dumps(parsed) + '\n'
+    print(sentence)
+    print(parsed)
+    return json.dumps(parsed) + '\n'
 
 if __name__ == '__main__':
    main()
