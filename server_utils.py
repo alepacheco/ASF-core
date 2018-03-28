@@ -72,7 +72,7 @@ def parseLabels(sentence, prediction):
         'departureTime': ''
     }
 
-    for i in range(len(prediction)):
+    for i in range(len(sentence)):
         label = prediction[i]
         word = sentence[i]
 

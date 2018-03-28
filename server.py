@@ -18,16 +18,11 @@ def main():
 @app.route('/parse', methods=['POST'])
 def parse():
     data = request.get_data()
-    sentence = data.strip().decode()
-    prediction = model.predict(server_utils.preprocess(sentence))
-    sentence = sentence.split(' ')
-
+    sentence = server_utils.preprocess(data.strip().decode())
+    prediction = model.predict(sentence)
+    print(prediction)
     parsed = server_utils.parseLabels(sentence, prediction)
     to_print = server_utils.align_data({"input": sentence, "output": prediction})
-
-    for key, seq in to_print.items():
-        print(seq)
-
 
     return json.dumps(parsed) + '\n'
 

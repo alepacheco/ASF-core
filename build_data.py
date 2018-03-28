@@ -1,5 +1,5 @@
 from model.config import Config
-from model.data_utils import CoNLLDataset, get_vocabs, UNK, NUM, \
+from model.data_utils import CoNLLDataset, get_vocabs, UNK, NUM, MONTH, \
     get_glove_vocab, write_vocab, load_vocab, get_char_vocab, \
     export_trimmed_glove_vectors, get_processing_word
 
@@ -35,6 +35,7 @@ def main():
     vocab = vocab_words & vocab_glove
     vocab.add(UNK)
     vocab.add(NUM)
+    vocab.add(MONTH)
 
     # Save vocab
     write_vocab(vocab, config.filename_words)

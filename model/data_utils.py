@@ -250,7 +250,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
         if replace_month:
             word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', MONTH, word)
         if replace_digits:
-            word = ''.join(list(map(lambda x: NUM if x.isdigit() else x, word)))
+            word = NUM if word.isdigit() else word
         if _encode_iatas:
             word = encode_iatas(word)
 
