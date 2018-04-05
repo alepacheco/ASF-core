@@ -128,7 +128,7 @@ def get_glove_vocab(filename):
     """
     print("Building vocab...")
     vocab = set()
-    with open(filename) as f:
+    with open(filename, encoding="utf8") as f:
         for line in f:
             word = line.strip().split(' ')[0]
             vocab.add(word)
@@ -192,7 +192,7 @@ def export_trimmed_glove_vectors(vocab, glove_filename, trimmed_filename, dim):
 
     """
     embeddings = np.zeros([len(vocab), dim])
-    with open(glove_filename) as f:
+    with open(glove_filename, encoding="utf8") as f:
         for line in f:
             line = line.strip().split(' ')
             word = line[0]
@@ -224,7 +224,7 @@ def get_trimmed_glove_vectors(filename):
 def get_processing_word(vocab_words=None, vocab_chars=None,
                     lowercase=False, chars=False, allow_unk=True,
                     replace_month=True, replace_digits=True,
-                    encode_iatas=True):
+                    encode_iatas_bool=True):
     """Return lambda function that transform a word (string) into list,
     or tuple of (list, id) of int corresponding to the ids of the word and
     its corresponding characters.
