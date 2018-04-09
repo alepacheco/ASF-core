@@ -2,6 +2,8 @@ import numpy as np
 import os
 import re
 import csv
+import pickle
+
 # shared global variables to be imported from model also
 UNK = "$unk$"
 NUM = "$num$"
@@ -128,7 +130,7 @@ def get_glove_vocab(filename):
     """
     print("Building vocab...")
     vocab = set()
-    with open(filename) as f:
+    with open(filename, encoding="utf8") as f:
         for line in f:
             word = line.strip().split(' ')[0]
             vocab.add(word)
@@ -192,7 +194,7 @@ def export_trimmed_glove_vectors(vocab, glove_filename, trimmed_filename, dim):
 
     """
     embeddings = np.zeros([len(vocab), dim])
-    with open(glove_filename) as f:
+    with open(glove_filename, encoding="utf8") as f:
         for line in f:
             line = line.strip().split(' ')
             word = line[0]
@@ -224,7 +226,8 @@ def get_trimmed_glove_vectors(filename):
 def get_processing_word(vocab_words=None, vocab_chars=None,
                     lowercase=False, chars=False, allow_unk=True,
                     replace_month=True, replace_digits=True,
-                    _encode_iatas=True):
+                    encode_iatas_bool=False):
+
     """Return lambda function that transform a word (string) into list,
     or tuple of (list, id) of int corresponding to the ids of the word and
     its corresponding characters.
@@ -251,7 +254,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
             word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', MONTH, word)
         if replace_digits:
             word = NUM if word.isdigit() else word
-        if _encode_iatas:
+        if encode_iatas_bool:
             word = encode_iatas(word)
 
         # 2. get id of word
@@ -435,3 +438,74 @@ def get_chunks(seq, tags):
         chunks.append(chunk)
 
     return chunks
+
+
+def do_train_split(filename_data,filename_train, filename_test, percentage=0.7):
+    lines = file_len(filename_data)
+    print('We have %d training samples' % lines)
+    train_lines = int(percentage*lines)
+
+    with open(filename_data) as f:
+        x = f.read()
+        x = x.split('\n\n')
+        traindata = x[0:train_lines]
+        print('Train set is written in %s' % filename_train)
+        with open(filename_train, 'w') as output:
+            output.write('\n\n'.join(traindata))
+
+        testdata = x[train_lines:-1]
+        print('Test set is written in %s' % filename_test)
+        with open(filename_test, 'w') as output:
+            output.write('\n\n'.join(testdata))
+
+def file_len(fname):
+    with open(fname) as f:
+        x = f.read()
+        x = x.split('\n\n')
+        i = len(x)
+    return i + 1
+def unpickle_atis(filename_atispickle, filename_data):
+    train, test, dic = pickle.load(open(filename_atispickle, 'rb'), encoding='latin-1')
+    w2idx, ne2idx, labels2idx = dic['words2idx'], dic['tables2idx'], dic['labels2idx']
+    idx2w = {w2idx[k]: k for k in w2idx}
+    idx2la = {labels2idx[k]: k for k in labels2idx}
+
+    test_x, test_ne, test_label = test
+    train_x, train_ne, train_label = train
+
+    wlength = 35
+    i = 0
+    file = []
+    for e in ['train', 'test']:
+        for sw, se, sl in zip(eval(e + '_x'), eval(e + '_ne'), eval(e + '_label')):
+            #print('WORD'.rjust(wlength), 'LABEL'.rjust(wlength))
+            sentence = []
+            for wx, la in zip(sw, sl):
+                #print(idx2w[wx].rjust(wlength), idx2la[la].rjust(wlength))
+                sentence.append(idx2w[wx] + ' ' + idx2la[la])
+            sentence = '\n'.join(sentence)
+            file.append(sentence)
+            i += 1
+            #print('\n' + '**' * 30 + '\n')
+    with open(filename_data, 'w') as output:
+        output.write('\n\n'.join(file))
+        #
+def refine_classes(filename, classmapping):
+    new_lines = []
+    with open(filename) as f:
+        x = f.readlines()
+        for line in x:
+            items = line.rstrip().split(' ')
+            for maps in ['B-','I-']:
+                for item in classmapping:
+                    if len(items) > 1 and items[1] == maps+item:
+                        if classmapping[item] != 'O':
+                            line = line.replace(maps+item, maps+classmapping[item])
+                        else:
+                            line = line.split(' ')[0] + ' O'
+
+            new_lines.append(line)
+
+
+    with open(filename, 'w') as output:
+        output.write(''.join(new_lines))

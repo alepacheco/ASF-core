@@ -2,7 +2,7 @@ import os
 import logging
 from .data_utils import get_trimmed_glove_vectors, load_vocab, \
         get_processing_word
-
+import datetime
 
 class Config():
     def __init__(self, load=True):
@@ -47,7 +47,8 @@ class Config():
 
 
     # general config
-    dir_output = "results/test/"
+    version = "0.0"
+    dir_output = "results/test/" + version +'/'
     dir_model  = dir_output + "model.weights/"
     path_log   = dir_output + "log.txt"
 
@@ -65,8 +66,9 @@ class Config():
     # filename_dev = "data/coNLL/eng/eng.testa.iob"
     # filename_test = "data/coNLL/eng/eng.testb.iob"
     # filename_train = "data/coNLL/eng/eng.train.iob"
-
-    filename_dev = filename_test = filename_train = "data/test.txt"
+    filename_data = "data/data.txt"
+    filename_dev = filename_test = "data/test.txt"
+    filename_train = "data/train.txt"
 
     max_iter = None # if not None, max number of examples in Dataset
 
@@ -90,6 +92,93 @@ class Config():
     hidden_size_lstm = 300 # lstm on word embeddings
 
     use_chars = True
+
+    mapping = {
+    'arrive_date.date_relative'       :'arrival_date',
+    'arrive_date.day_name'            :'arrival_date',
+    'arrive_date.day_number'          :'arrival_date',
+    'arrive_date.month_name'          :'arrival_date',
+    'arrive_date.today_relative'      :'arrival_date',
+    'arrive_time.end_time'            :'arrival_date',
+    'arrive_time.period_mod'          :'arrival_date',
+    'arrive_time.period_of_day'       :'arrival_date',
+    'arrive_time.start_time'          :'arrival_date',
+    'arrive_time.time'                :'arrival_date',
+    'arrive_time.time_relative'       :'arrival_date',
+    'depart_date.date_relative'       :'departure_date',
+    'depart_date.day_name'            :'departure_date',
+    'depart_date.day_number'          :'departure_date',
+    'depart_date.month_name'          :'departure_date',
+    'depart_date.today_relative'      :'departure_date',
+    'depart_date.year'                :'departure_date',
+    'depart_time.end_time'            :'departure_date',
+    'depart_time.period_mod'          :'departure_date',
+    'depart_time.period_of_day'       :'departure_date',
+    'depart_time.start_time'          :'departure_date',
+    'depart_time.time'                :'departure_date',
+    'depart_time.time_relative'       :'departure_date',
+    'return_date.date_relative'       :'return_date',
+    'return_date.day_name'            :'return_date',
+    'return_date.day_number'          :'return_date',
+    'return_date.month_name'          :'return_date',
+    'return_date.today_relative'      :'return_date',
+    'return_time.period_mod'          :'return_date',
+    'return_time.period_of_day'       :'return_date',
+    'fromloc.airport_code'            :'from',
+    'fromloc.airport_name'            :'from',
+    'fromloc.city_name'               :'from',
+    'fromloc.state_code'              :'from',
+    'fromloc.state_name'              :'from',
+    'toloc.airport_code'              :'to',
+    'toloc.airport_name'              :'to',
+    'toloc.city_name'                 :'to',
+    'toloc.country_name'              :'to',
+    'toloc.state_code'                :'to',
+    'toloc.state_name'                :'to',
+    'stoploc.airport_code'            :'O',
+    'stoploc.airport_name'            :'O',
+    'stoploc.city_name'               :'O',
+    'stoploc.state_code'              :'O',
+    'or'                              :'O',
+    'month_name'                      :'O',
+    'period_of_day'                   :'O',
+    'time'                            :'O',
+    'time_relative'                   :'O',
+    'today_relative'                  :'O',
+    'day_name'                        :'O',
+    'day_number'                      :'O',
+    'days_code'                       :'O',
+    'aircraft_code'                   :'O',
+    'airline_code'                    :'O',
+    'airline_name'                    :'O',
+    'airport_code'                    :'O',
+    'airport_name'                    :'O',
+    'transport_type'                  :'O',
+    'booking_class'                   :'O',
+    'city_name'                       :'O',
+    'class_type'                      :'O',
+    'compartment'                     :'O',
+    'connect'                         :'O',
+    'cost_relative'                   :'O',
+    'economy'                         :'O',
+    'fare_amount'                     :'O',
+    'fare_basis_code'                 :'O',
+    'flight_days'                     :'O',
+    'flight_mod'                      :'O',
+    'flight_number'                   :'O',
+    'flight_stop'                     :'O',
+    'flight_time'                     :'O',
+    'flight'                          :'O',
+    'meal'                            :'O',
+    'meal_code'                       :'O',
+    'meal_description'                :'O',
+    'mod'                             :'O',
+    'restriction_code'                :'O',
+    'round_trip'                      :'O',
+    'state_code'                      :'O',
+    'state_name'                      :'O',
+    }
+
 
 
 def get_logger(filename):
