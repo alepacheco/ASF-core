@@ -1,6 +1,6 @@
 import http.client
 import json
-import csv
+import pickle
 import re
 import parsedatetime
 import datetime
@@ -29,6 +29,7 @@ def getIATA(city_name):
     conn.request("POST", "/flights/rpc", payload, headers)
     res = conn.getresponse()
     data = json.loads(res.read().decode("utf-8"))
+    print(data)
     aiports = json.loads(data['1'][0]['2'])
     try:
         return aiports['3'][0]['2']
@@ -69,48 +70,33 @@ def parseLabels(sentence, prediction):
         'destination': '',
         'departureDate': '',
         'returnDate': '',
-        'departureTime': ''
+        #'departureTime': ''
     }
 
     for i in range(len(prediction)):
         label = prediction[i]
         word = sentence[i]
+        # TODO we are not using: arrival_date
 
-        if label == "B-round_trip" or label == "I-round_trip":
-            parsed['type'] = 'round_trip'
-        elif label == "B-ow_trip" or label == "I-ow_trip":
-            parsed['type'] = 'ow_trip'
-
-        elif label == "B-toloc.city_name":
+        if label == "B-to":
             parsed['destination'] = word
-        elif label == "I-toloc.city_name":
+        elif label == "I-to":
             parsed['destination'] += ' ' + word
-
-        elif label == "B-fromloc.city_name":
+        elif label == "B-from":
             parsed['departure'] = word
-        elif label == "I-fromloc.city_name":
+        elif label == "I-from":
             parsed['departure'] += ' ' + word
-
-        elif label.startswith("B-depart_date"):
+        elif label.startswith("B-departure_date"):
             parsed['departureDate'] += ' ' + word
             parsed['type'] = 'round_trip'
-        elif label.startswith("I-depart_date"):
+        elif label.startswith("I-departure_date"):
             parsed['departureDate'] += ' ' + word
             parsed['type'] = 'round_trip'
-
         elif label.startswith("B-return_date"):
             parsed['returnDate'] += ' ' + word
         elif label.startswith("I-return_date"):
             parsed['returnDate'] += ' ' + word
 
-        elif label.startswith("B-depart_time"):
-            parsed['departureDate'] += ' ' + word
-            # in case date number gets interpreted as time
-            if validateTime(parsed['departureTime']) is None:
-                parsed['departureTime'] = word
-        elif label.startswith("I-depart_time"):
-            parsed['departureDate'] += ' ' + word
-            parsed['departureTime'] += ' ' + word
 
     parsed['departure'] = getIATA(parsed['departure'])
     parsed['destination'] = getIATA(parsed['destination'])

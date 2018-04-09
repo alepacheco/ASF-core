@@ -1,7 +1,7 @@
 from model.config import Config
 from model.data_utils import CoNLLDataset, get_vocabs, UNK, NUM, \
     get_glove_vocab, write_vocab, load_vocab, get_char_vocab, \
-    export_trimmed_glove_vectors, get_processing_word
+    export_trimmed_glove_vectors, get_processing_word ,do_train_split, unpickle_atis, refine_classes
 
 
 def main():
@@ -21,6 +21,12 @@ def main():
     """
     # get config and processing of words
     config = Config(load=False)
+
+    unpickle_atis('./data/atis.pkl', config.filename_data)
+
+    refine_classes(config.filename_data, config.mapping)
+
+    do_train_split(config.filename_data,config.filename_train,config.filename_test)
     processing_word = get_processing_word(lowercase=True)
 
     # Generators
