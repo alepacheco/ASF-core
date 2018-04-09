@@ -6,7 +6,7 @@ import pickle
 
 # shared global variables to be imported from model also
 UNK = "$unk$"
-NUM = "$num$"
+NUM = "DIGIT"
 MONTH = "$month$"
 IATA = "$iata$"
 NONE = "O"
@@ -225,7 +225,7 @@ def get_trimmed_glove_vectors(filename):
 
 def get_processing_word(vocab_words=None, vocab_chars=None,
                     lowercase=False, chars=False, allow_unk=True,
-                    replace_month=True, replace_digits=True,
+                    replace_month=False, replace_digits=True,
                     encode_iatas_bool=False):
 
     """Return lambda function that transform a word (string) into list,
@@ -502,7 +502,7 @@ def refine_classes(filename, classmapping):
                         if classmapping[item] != 'O':
                             line = line.replace(maps+item, maps+classmapping[item])
                         else:
-                            line = line.split(' ')[0] + ' O'
+                            line = line.split(' ')[0] + ' O\n'
 
             new_lines.append(line)
 
