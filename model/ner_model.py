@@ -208,7 +208,8 @@ class NERModel():
             _word_embeddings = tf.Variable(
                     self.config.embeddings,
                     name="_word_embeddings",
-                    dtype=tf.float32,                        trainable=self.config.train_embeddings)
+                    dtype=tf.float32,
+                    trainable=self.config.train_embeddings)
 
             word_embeddings = tf.nn.embedding_lookup(_word_embeddings,
                     self.word_ids, name="word_embeddings")
@@ -304,15 +305,19 @@ class NERModel():
 
         """
         fd, sequence_lengths = self.get_feed_dict(words, dropout=1.0)
+            # get tag scores and transition params of CRF
+        viterbi_sequences = []
+        logits, trans_params = self.sess.run(
+                [self.logits, self.trans_params], feed_dict=fd)
 
-        # get tag scores and transition params of CRF
-        viterbi_sequence, viterbi_score = tf.contrib.crf.crf_decode(
-                self.logits, self.trans_params, tf.constant(sequence_lengths))
-
-        viterbi_sequences = self.sess.run(viterbi_sequence, feed_dict=fd)
+        # iterate over the sentences because no batching in vitervi_decode
+        for logit, sequence_length in zip(logits, sequence_lengths):
+            logit = logit[:sequence_length] # keep only the valid steps
+            viterbi_seq, viterbi_score = tf.contrib.crf.viterbi_decode(
+                    logit, trans_params)
+            viterbi_sequences += [viterbi_seq]
 
         return viterbi_sequences, sequence_lengths
-
 
     def run_epoch(self, train, dev, epoch):
         """Performs one complete pass over the train set and evaluate on dev
