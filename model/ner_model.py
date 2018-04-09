@@ -7,7 +7,6 @@ from .data_utils import minibatches, pad_sequences, get_chunks
 
 
 class NERModel():
-    """Specialized class of Model for NER"""
     def reinitialize_weights(self, scope_name):
         """Reinitializes the weights of a given layer"""
         variables = tf.contrib.framework.get_variables(scope_name)
@@ -305,7 +304,8 @@ class NERModel():
 
         """
         fd, sequence_lengths = self.get_feed_dict(words, dropout=1.0)
-            # get tag scores and transition params of CRF
+
+        # get tag scores and transition params of CRF
         viterbi_sequences = []
         logits, trans_params = self.sess.run(
                 [self.logits, self.trans_params], feed_dict=fd)
