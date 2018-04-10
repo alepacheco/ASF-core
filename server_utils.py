@@ -70,7 +70,7 @@ def parseLabels(sentence, prediction):
         'destination': '',
         'departureDate': '',
         'returnDate': '',
-        #'departureTime': ''
+        'departureTime': ''
     }
 
     for i in range(len(sentence)):
