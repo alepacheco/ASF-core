@@ -14,15 +14,13 @@ model.restore_session(config.dir_model)
 def main():
     app.run(debug=True)
 
-
 @app.route('/parse', methods=['POST'])
 def parse():
     data = request.get_data()
     sentence = server_utils.preprocess(data.strip().decode())
     prediction = model.predict(sentence)
     print(prediction)
-    parsed = server_utils.parseLabels(sentence, prediction)
-    to_print = server_utils.align_data({"input": sentence, "output": prediction})
+    parsed = server_utils.parse_labels(sentence, prediction)
 
     return json.dumps(parsed) + '\n'
 

@@ -32,6 +32,7 @@ vegas I-toloc.city_name
 
 # Usage
 ### Working demo: https://ofis.justanotherdemo.xyz/
+> Code on server in branch: stable
 
 ### Start the server
 ```bash
@@ -49,9 +50,9 @@ curl -X POST "http://localhost:5000/parse" -d "flight to new york from los angel
   "type": "",
   "departure": "LAX",
   "destination": "NYC",
-  "departureDate": "2018-03-25",
-  "departureTime": "",
-  "returnDate": ""
+  "departure_date": "2018-03-25",
+  "departure_time": "",
+  "return_date": ""
 }
 ```
 
