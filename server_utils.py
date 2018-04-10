@@ -1,6 +1,4 @@
-import http.client
 import json
-import pickle
 import re
 import parsedatetime
 import datetime
@@ -8,18 +6,20 @@ import urllib.request
 
 
 def preprocess(sentence):
-    encoded = preprocessTimes(sentence)
+    encoded = preprocess_times(sentence)
     return encoded.split(' ')
 
-def getIATA(location_name):
+def get_iata(location_name):
     if location_name == '':
         return None
     url = "https://www.edreams.com/travel/service/geo/autocomplete;searchWord=%(DESTINATION)s;departureOrArrival=DEPARTURE;addSearchByCountry=true;addSearchByRegion=true;product=FLIGHT" % {u'DESTINATION': location_name}
-    contents = urllib.request.urlopen(url).read()
+    contents = urllib.request.urlopen(url).read().decode("utf-8")
     return json.loads(contents)[0]['iata']
 
 
-def preprocessTimes(sentence):
+def preprocess_times(sentence):
+    """Split times '12pm' to '12 pm' for the model to prosses correctly """
+
     times = re.finditer(r'[0-9]{2}(?:am|pm)\b', sentence)
     positions = []
     for item in times:
@@ -31,7 +31,7 @@ def preprocessTimes(sentence):
 
     return ''.join(sentence)
 
-def parseDates(date):
+def parse_dates(date):
     pdt = parsedatetime.Calendar()
     timestruct, result = pdt.parse(date)
     if result:
@@ -39,20 +39,20 @@ def parseDates(date):
     else:
         return None
 
-def validateTime(time):
+def validate_time(time):
     if ':' in time or 'pm' in time or 'am' in time:
         return time
     else:
         return None
 
-def parseLabels(sentence, prediction):
+def parse_labels(sentence, prediction):
     parsed = {
         'type': 'ow_trip',
         'departure': '',
         'destination': '',
-        'departureDate': '',
-        'returnDate': '',
-        'departureTime': ''
+        'departure_date': '',
+        'return_date': '',
+        'departure_time': ''
     }
 
     for i in range(len(sentence)):
@@ -69,22 +69,22 @@ def parseLabels(sentence, prediction):
         elif label == "I-from":
             parsed['departure'] += ' ' + word
         elif label.startswith("B-departure_date"):
-            parsed['departureDate'] += ' ' + word
+            parsed['departure_date'] += ' ' + word
         elif label.startswith("I-departure_date"):
-            parsed['departureDate'] += ' ' + word
+            parsed['departure_date'] += ' ' + word
         elif label.startswith("B-return_date"):
-            parsed['returnDate'] += ' ' + word
+            parsed['return_date'] += ' ' + word
             parsed['type'] = 'round_trip'
         elif label.startswith("I-return_date"):
-            parsed['returnDate'] += ' ' + word
+            parsed['return_date'] += ' ' + word
             parsed['type'] = 'round_trip'
 
 
-    parsed['departure'] = getIATA(parsed['departure'])
-    parsed['destination'] = getIATA(parsed['destination'])
-    parsed['departureDate'] = parseDates(parsed['departureDate'])
-    parsed['returnDate'] = parseDates(parsed['returnDate'])
-    parsed['departureTime'] = validateTime(parsed['departureTime'])
+    parsed['departure'] = get_iata(parsed['departure'])
+    parsed['destination'] = get_iata(parsed['destination'])
+    parsed['departure_date'] = parse_dates(parsed['departure_date'])
+    parsed['return_date'] = parse_dates(parsed['return_date'])
+    parsed['departure_time'] = validate_time(parsed['departure_time'])
 
     return parsed
 

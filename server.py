@@ -36,8 +36,7 @@ def parse():
 
     prediction = model.predict(sentence)
     print(prediction)
-    parsed = server_utils.parseLabels(sentence, prediction)
-    to_print = server_utils.align_data({"input": sentence, "output": prediction})
+    parsed = server_utils.parse_labels(sentence, prediction)
 
     return json.dumps(parsed) + '\n'
 
