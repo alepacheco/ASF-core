@@ -4,37 +4,19 @@ import pickle
 import re
 import parsedatetime
 import datetime
+import urllib.request
+
 
 def preprocess(sentence):
     encoded = preprocessTimes(sentence)
     return encoded.split(' ')
 
-def getIATA(city_name):
-    conn = http.client.HTTPSConnection("www.google.es")
-    request = {
-      '2': city_name
-    }
-    payload = json.dumps({
-      '1':[
-        {
-          '1': 'aa',
-          '2': json.dumps(request)
-        }
-      ]
-    })
-    headers = {
-        'x-gwt-permutation': "C6AE2226F2736ED890C050AF7708C2FD",
-        'cache-control': "no-cache",
-    }
-    conn.request("POST", "/flights/rpc", payload, headers)
-    res = conn.getresponse()
-    data = json.loads(res.read().decode("utf-8"))
-    print(data)
-    aiports = json.loads(data['1'][0]['2'])
-    try:
-        return aiports['3'][0]['2']
-    except KeyError:
+def getIATA(location_name):
+    if location_name == '':
         return None
+    url = "https://www.edreams.com/travel/service/geo/autocomplete;searchWord=%(DESTINATION)s;departureOrArrival=DEPARTURE;addSearchByCountry=true;addSearchByRegion=true;product=FLIGHT" % {u'DESTINATION': location_name}
+    contents = urllib.request.urlopen(url).read()
+    return json.loads(contents)[0]['iata']
 
 
 def preprocessTimes(sentence):
@@ -88,14 +70,14 @@ def parseLabels(sentence, prediction):
             parsed['departure'] += ' ' + word
         elif label.startswith("B-departure_date"):
             parsed['departureDate'] += ' ' + word
-            parsed['type'] = 'round_trip'
         elif label.startswith("I-departure_date"):
             parsed['departureDate'] += ' ' + word
-            parsed['type'] = 'round_trip'
         elif label.startswith("B-return_date"):
             parsed['returnDate'] += ' ' + word
+            parsed['type'] = 'round_trip'
         elif label.startswith("I-return_date"):
             parsed['returnDate'] += ' ' + word
+            parsed['type'] = 'round_trip'
 
 
     parsed['departure'] = getIATA(parsed['departure'])
