@@ -3,4 +3,5 @@ numpy
 logging
 progressbar2
 flask
+flask_sqlalchemy
 parsedatetime
