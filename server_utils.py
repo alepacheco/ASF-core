@@ -31,8 +31,59 @@ def preprocess_times(sentence):
 
     return ''.join(sentence)
 
+
+
+def preprocess_number_date(pdt, date):
+    pdt.ptc.small['first'] = 1
+    pdt.ptc.small['eleventh'] = 11
+    pdt.ptc.small['twenty-first'] = 21
+    pdt.ptc.small['thirty-first'] = 31
+    pdt.ptc.small['second'] = 2
+    pdt.ptc.small['twelfth'] = 12
+    pdt.ptc.small['twenty-second'] = 22
+    pdt.ptc.small['third'] = 3
+    pdt.ptc.small['thirteenth'] = 13
+    pdt.ptc.small['twenty-third'] = 23
+    pdt.ptc.small['fourth'] = 4
+    pdt.ptc.small['fourteenth'] = 14
+    pdt.ptc.small['twenty-fourt'] = 24
+    pdt.ptc.small['fifth'] = 5
+    pdt.ptc.small['fifteenth'] = 15
+    pdt.ptc.small['twenty-fifth'] = 25
+    pdt.ptc.small['sixth'] = 6
+    pdt.ptc.small['sixteenth'] = 16
+    pdt.ptc.small['twenty-sixth'] = 26
+    pdt.ptc.small['seventh'] = 7
+    pdt.ptc.small['seventeenth'] = 17
+    pdt.ptc.small['twenty-seven'] = 27
+    pdt.ptc.small['eighth'] = 8
+    pdt.ptc.small['eighteenth'] = 18
+    pdt.ptc.small['twenty-eight'] = 28
+    pdt.ptc.small['ninth'] = 9
+    pdt.ptc.small['nineteenth'] = 19
+    pdt.ptc.small['twenty-ninth'] = 29
+    pdt.ptc.small['tenth'] = 10
+    pdt.ptc.small['twentieth'] = 20
+    pdt.ptc.small['thirtieth'] = 30
+
+    splitted = date.split(' ')
+    for idx in range(len(splitted)):
+        for i in range(len(splitted),idx,-1):
+            analyze = splitted[idx:i]
+            try:
+                words = ' '.join(analyze)
+                x = pdt._convertUnitAsWords(words)
+                leading = ' '.join(splitted[0:idx])
+                trailing = ' '.join(splitted[i:])
+                return leading + ' '+str(x)+'th ' +trailing
+            except:
+                pass
+    return date
+
 def parse_dates(date):
     pdt = parsedatetime.Calendar()
+    date = preprocess_number_date(pdt, date)
+
     timestruct, result = pdt.parse(date)
     if result:
         return datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d")
