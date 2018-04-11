@@ -505,6 +505,15 @@ def refine_classes(filename, classmapping):
                             line = line.split(' ')[0] + ' O\n'
 
             new_lines.append(line)
+        #Because of the classes being reduced sometimes we can have the situation that we need to refactor a bit.
+        previous_line = None
+        for idx, line in enumerate(new_lines):
+            tag = line.rstrip().split(' ')
+            if previous_line is not None:
+                previous_tag = previous_line.rstrip().split(' ')
+            if previous_line is not None and len(tag) > 1 and len(previous_tag) > 1 and tag[1] == previous_tag[1]:
+                new_lines[idx]= line.replace('B-','I-')
+            previous_line = line
 
 
     with open(filename, 'w') as output:
