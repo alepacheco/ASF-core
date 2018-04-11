@@ -2,9 +2,10 @@ from model.data_utils import CoNLLDataset
 from model.ner_model import NERModel
 from model.config import Config
 from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
+from server_config import ServerConfig
 import json
 import server_utils
-from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
@@ -12,11 +13,11 @@ config = Config()
 model = NERModel(config)
 model.build()
 model.restore_session(config.dir_model)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = ServerConfig.logs_database_namefile
 db = SQLAlchemy(app)
 def main():
     db.create_all()
-    app.run(debug=True)
+    app.run(debug=ServerConfig.debug_flask)
 
 
 class Question(db.Model):
@@ -48,9 +49,3 @@ def data():
 
 if __name__  == '__main__':
    main()
-
-from flask import Flask
-
-app = Flask(__name__)
-
-

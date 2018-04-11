@@ -3,19 +3,51 @@ import re
 import parsedatetime
 import datetime
 import urllib.request
-
+import http.client
+from server_config import ServerConfig
 
 def preprocess(sentence):
     encoded = preprocess_times(sentence)
     return encoded.split(' ')
 
-def get_iata(location_name):
+def get_iata_internal(location_name):
+    """ Gets iata info from edreams, only works internally """
     if location_name == '':
         return None
     url = "https://www.edreams.com/travel/service/geo/autocomplete;searchWord=%(DESTINATION)s;departureOrArrival=DEPARTURE;addSearchByCountry=true;addSearchByRegion=true;product=FLIGHT" % {u'DESTINATION': location_name}
     contents = urllib.request.urlopen(url).read().decode("utf-8")
     return json.loads(contents)[0]['iata']
 
+def get_iata_external(city):
+    conn = http.client.HTTPSConnection("www.google.es")
+    request = {
+      '2': city
+    }
+    payload = json.dumps({
+      '1':[
+        {
+          '1': 'aa',
+          '2': json.dumps(request)
+        }
+      ]
+    })
+    headers = {
+        'x-gwt-permutation': "C6AE2226F2736ED890C050AF7708C2FD",
+        'cache-control': "no-cache",
+    }
+    conn.request("POST", "/flights/rpc", payload, headers)
+    res = conn.getresponse()
+    data = json.loads(res.read().decode("utf-8"))
+    aiports = json.loads(data['1'][0]['2'])
+    try:
+        return aiports['3'][0]['2']
+    except KeyError:
+        return None
+
+def get_iata(location_name):
+    if ServerConfig.use_internal_iata:
+        return get_iata_internal(location_name)
+    return get_iata_external(location_name)
 
 def preprocess_times(sentence):
     """Split times '12pm' to '12 pm' for the model to prosses correctly """
@@ -86,7 +118,7 @@ def parse_dates(date):
 
     timestruct, result = pdt.parse(date)
     if result:
-        return datetime.datetime(*timestruct[:3]).strftime("%Y-%m-%d")
+        return datetime.datetime(*timestruct[:3]).strftime(ServerConfig.date_format)
     else:
         return None
 
@@ -115,27 +147,46 @@ def parse_labels(sentence, prediction):
             parsed['destination'] = word
         elif label == "I-to":
             parsed['destination'] += ' ' + word
+
         elif label == "B-from":
             parsed['departure'] = word
         elif label == "I-from":
             parsed['departure'] += ' ' + word
-        elif label.startswith("B-departure_date"):
-            parsed['departure_date'] += ' ' + word
-        elif label.startswith("I-departure_date"):
-            parsed['departure_date'] += ' ' + word
-        elif label.startswith("B-return_date"):
-            parsed['return_date'] += ' ' + word
-            parsed['type'] = 'round_trip'
-        elif label.startswith("I-return_date"):
-            parsed['return_date'] += ' ' + word
-            parsed['type'] = 'round_trip'
 
+        elif label == "B-departure_date":
+            if parsed['departure_date'] != '' and ServerConfig.assume_dates_order:
+                parsed['return_date'] = word
+                parsed['type'] = 'round_trip'
+            else:
+                parsed['departure_date'] = word
+
+        elif label == "I-departure_date":
+            if parsed['return_date'] != '' and ServerConfig.assume_dates_order:
+                parsed['return_date'] += ' ' + word
+            else:
+                parsed['departure_date'] += ' ' + word
+
+        elif label == "B-return_date":
+            parsed['return_date'] += ' ' + word
+        elif label == "I-return_date":
+            parsed['return_date'] += ' ' + word
+
+    if parsed['return_date'] != '':
+        parsed['type'] = 'round_trip'
 
     parsed['departure'] = get_iata(parsed['departure'])
     parsed['destination'] = get_iata(parsed['destination'])
     parsed['departure_date'] = parse_dates(parsed['departure_date'])
     parsed['return_date'] = parse_dates(parsed['return_date'])
     parsed['departure_time'] = validate_time(parsed['departure_time'])
+
+    if parsed['departure_date'] and parsed['return_date']:
+        depart_date = datetime.datetime.strptime(parsed['departure_date'], ServerConfig.date_format)
+        return_date = datetime.datetime.strptime(parsed['return_date'], ServerConfig.date_format)
+        print(depart_date, return_date, depart_date > return_date)
+        if depart_date > return_date:
+            parsed['departure_date'] = return_date.strftime(ServerConfig.date_format)
+            parsed['return_date'] = depart_date.strftime(ServerConfig.date_format)
 
     return parsed
 
