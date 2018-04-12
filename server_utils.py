@@ -158,7 +158,7 @@ def parse_labels(sentence, prediction):
                 parsed['return_date'] = word
                 parsed['type'] = 'round_trip'
             else:
-                parsed['departure_date'] = word
+                parsed['departure_date'] += ' ' + word
 
         elif label == "I-departure_date":
             if parsed['return_date'] != '' and ServerConfig.assume_dates_order:
@@ -183,7 +183,6 @@ def parse_labels(sentence, prediction):
     if parsed['departure_date'] and parsed['return_date']:
         depart_date = datetime.datetime.strptime(parsed['departure_date'], ServerConfig.date_format)
         return_date = datetime.datetime.strptime(parsed['return_date'], ServerConfig.date_format)
-        print(depart_date, return_date, depart_date > return_date)
         if depart_date > return_date:
             parsed['departure_date'] = return_date.strftime(ServerConfig.date_format)
             parsed['return_date'] = depart_date.strftime(ServerConfig.date_format)
