@@ -12,3 +12,4 @@ data/train.txt
 data/test.txt
 data/data.txt
 data/data_old.txt
+.elasticbeanstalk/
