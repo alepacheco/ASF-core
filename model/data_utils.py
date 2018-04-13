@@ -226,7 +226,7 @@ def get_trimmed_glove_vectors(filename):
 def get_processing_word(vocab_words=None, vocab_chars=None,
                     lowercase=False, chars=False, allow_unk=True,
                     replace_month=False, replace_digits=True,
-                    encode_iatas_bool=False):
+                    encode_iatas_bool=False, multiple_digits_same=False):
 
     """Return lambda function that transform a word (string) into list,
     or tuple of (list, id) of int corresponding to the ids of the word and
@@ -234,7 +234,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
 
     Args:
         vocab: dict[word] = idx
-
+        multiple_digits_same: Encode 32 and 2 as DIGIT or as DIGITDIGIT
     Returns:
         f("cat") = ([12, 4, 32], 12345)
                  = (list of char ids, word id)
@@ -248,14 +248,20 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
                 if char in vocab_chars:
                     char_ids += [vocab_chars[char]]
 
-        if lowercase:
-            word = word.lower()
+        if multiple_digits_same:
+            if NUM in word:
+                word = NUM
+            if replace_digits:
+                word = NUM if word.isdigit() else word
+        elif replace_digits:
+            word = ''.join(list(map(lambda l:(NUM if l.isdigit() else l), word)))
+    
         if replace_month:
             word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', MONTH, word)
-        if replace_digits:
-            word = NUM if word.isdigit() else word
         if encode_iatas_bool:
             word = encode_iatas(word)
+        if lowercase:
+            word = word.lower()
 
         # 2. get id of word
         if vocab_words is not None:

@@ -66,6 +66,7 @@ def preprocess_times(sentence):
 
 
 def preprocess_number_date(pdt, date):
+    """ Convers written numbers to ordinal digits """
     pdt.ptc.small['first'] = 1
     pdt.ptc.small['eleventh'] = 11
     pdt.ptc.small['twenty-first'] = 21
