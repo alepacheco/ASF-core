@@ -15,8 +15,12 @@ def get_iata_internal(location_name):
     if location_name == '':
         return None
     url = "https://www.edreams.com/travel/service/geo/autocomplete;searchWord=%(DESTINATION)s;departureOrArrival=DEPARTURE;addSearchByCountry=true;addSearchByRegion=true;product=FLIGHT" % {u'DESTINATION': location_name}
-    contents = urllib.request.urlopen(url).read().decode("utf-8")
-    return json.loads(contents)[0]['iata']
+    try:
+        contents = urllib.request.urlopen(url).read().decode("utf-8")
+        return json.loads(contents)[0]['iata']
+    except Exception as e:
+        print('get_iata_internal: ', str(e))
+        return None
 
 def get_iata_external(city):
     conn = http.client.HTTPSConnection("www.google.es")
