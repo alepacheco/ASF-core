@@ -8,16 +8,17 @@ import json
 import server_utils
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 config = Config()
 model = NERModel(config)
 model.build()
 model.restore_session(config.dir_model)
-app.config['SQLALCHEMY_DATABASE_URI'] = ServerConfig.logs_database_namefile
-db = SQLAlchemy(app)
+application.config['SQLALCHEMY_DATABASE_URI'] = ServerConfig.logs_database_namefile
+db = SQLAlchemy(application)
+
 def main():
     db.create_all()
-    app.run(debug=ServerConfig.debug_flask)
+    application.run(debug=ServerConfig.debug_flask)
 
 
 class Question(db.Model):
@@ -27,7 +28,7 @@ class Question(db.Model):
     def __repr__(self):
         return '<Question %r>' % self.question
 
-@app.route('/parse', methods=['POST'])
+@application.route('/parse', methods=['POST'])
 def parse():
     data = request.get_data()
     sentence = server_utils.preprocess(data.strip().decode())
@@ -41,7 +42,7 @@ def parse():
 
     return json.dumps(parsed) + '\n'
 
-@app.route('/data', methods=['GET'])
+@application.route('/data', methods=['GET'])
 def data():
    questions = Question.query.all()
    return '\n'.join(str(e) for e in questions)
