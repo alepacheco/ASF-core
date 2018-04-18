@@ -5,10 +5,11 @@ import csv
 import pickle
 
 # shared global variables to be imported from model also
-UNK = "$unk$"
+UNK = "<unk>"
 NUM = "DIGIT"
-MONTH = "$month$"
-IATA = "$iata$"
+ORDINAL = "ORD_DIGIT"
+MONTH = "<month>"
+IATA = "<iata>"
 NONE = "O"
 
 class CoNLLDataset(object):

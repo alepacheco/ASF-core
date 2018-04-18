@@ -5,9 +5,11 @@ import datetime
 import urllib.request
 import http.client
 from server_config import ServerConfig
+from num2words import num2words
 
 def preprocess(sentence):
     encoded = preprocess_times(sentence)
+    encoded = preprocess_dates(encoded)
     return encoded.split(' ')
 
 def get_iata_internal(location_name):
@@ -67,7 +69,19 @@ def preprocess_times(sentence):
 
     return ''.join(sentence)
 
+def preprocess_dates(sentence):
+    """ Cahnges ordinal diogits 24th to wtritten version twenty-four """
+    times = re.finditer(r'\d{1,2}(?:st|nd|rd|th)\b', sentence)
+    dates = []
+    for i in times:
+        match = sentence[i.start():i.end()]
+        date = ''.join(list(filter(lambda x : x.isdigit(), match)))
+        dates.append((match, num2words(int(date), to='ordinal')))
 
+    for date in dates:
+        sentence = sentence.replace(date[0], date[1])
+
+    return sentence
 
 def preprocess_number_date(pdt, date):
     """ Convers written numbers to ordinal digits """
