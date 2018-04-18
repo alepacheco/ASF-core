@@ -284,6 +284,7 @@ class NERModel():
 
 
     def build(self):
+        tf.reset_default_graph()
         self.add_placeholders()
         self.add_word_embeddings_op()
         self.add_logits_op()
