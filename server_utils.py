@@ -16,10 +16,10 @@ def get_iata_internal(location_name):
     """ Gets iata info from edreams, only works internally """
     if location_name == '':
         return None
-    url = "https://www.edreams.com/travel/service/geo/autocomplete;searchWord=%(DESTINATION)s;departureOrArrival=DEPARTURE;addSearchByCountry=true;addSearchByRegion=true;product=FLIGHT" % {u'DESTINATION': location_name}
+    url = "http://geo.odigeo.com/geo-service/geo/v3/autocomplete/findSorted;searchInAllWords=true;departureOrArrival=DEPARTURE;website=GB;multiLanguage=true;addSearchByRegion=true;searchKey=%(DESTINATION)s;locale=en_EN;addSearchByCountry=true;productType=FLIGHT;relatedLocations=true" % {u'DESTINATION': location_name}
     try:
         contents = urllib.request.urlopen(url).read().decode("utf-8")
-        return json.loads(contents)[0]['iata']
+        return json.loads(contents)[0]['iataCode']
     except Exception as e:
         print('get_iata_internal: ', str(e))
         return None
