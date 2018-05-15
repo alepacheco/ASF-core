@@ -3,6 +3,7 @@ import re
 import parsedatetime
 import datetime
 import urllib.request
+import urllib.parse
 import http.client
 from server_config import ServerConfig
 from num2words import num2words
@@ -16,7 +17,8 @@ def get_iata_internal(location_name):
     """ Gets iata info from edreams, only works internally """
     if location_name == '':
         return None
-    url = "http://geo.odigeo.com/geo-service/geo/v3/autocomplete/findSorted;searchInAllWords=true;departureOrArrival=DEPARTURE;website=GB;multiLanguage=true;addSearchByRegion=true;searchKey=%(DESTINATION)s;locale=en_EN;addSearchByCountry=true;productType=FLIGHT;relatedLocations=true" % {u'DESTINATION': location_name}
+
+    url = "http://geo.odigeo.com/geo-service/geo/v3/autocomplete/findSorted;searchInAllWords=true;departureOrArrival=DEPARTURE;website=GB;multiLanguage=true;addSearchByRegion=true;searchKey=%(DESTINATION)s;locale=en_EN;addSearchByCountry=true;productType=FLIGHT;relatedLocations=true" % {u'DESTINATION': urllib.parse.quote(location_name)}
     try:
         contents = urllib.request.urlopen(url).read().decode("utf-8")
         return json.loads(contents)[0]['iataCode']
