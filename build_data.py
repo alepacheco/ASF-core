@@ -3,6 +3,7 @@ from model.data_utils import CoNLLDataset, get_vocabs, UNK, NUM, MONTH, \
     get_glove_vocab, write_vocab, load_vocab, get_char_vocab, \
     export_trimmed_glove_vectors, get_processing_word ,do_train_split, unpickle_atis, refine_classes
 
+from data.generator import gen_file
 
 def main():
     """Procedure to build data
@@ -24,9 +25,11 @@ def main():
 
     unpickle_atis('./data/atis.pkl', config.filename_data)
 
+    gen_file(config.filename_data, 15000)
     refine_classes(config.filename_data, config.mapping)
 
-    do_train_split(config.filename_data,config.filename_train,config.filename_test)
+    # TODO randomize order
+    do_train_split(config.filename_data,config.filename_train,config.filename_test, percentage=0.9)
     processing_word = get_processing_word(lowercase=True)
 
     # Generators

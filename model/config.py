@@ -77,7 +77,7 @@ class Config():
     # training
     train_embeddings = False
     nepochs          = 15
-    dropout          = 0.6
+    dropout          = 0.5
     batch_size       = 246
     lr               = 0.01
     lr_decay         = 0.9
@@ -88,7 +88,7 @@ class Config():
     hidden_size_char = 100 # lstm on chars
     hidden_size_lstm = 300 # lstm on word embeddings
 
-    use_chars = True
+    use_chars = False
 
     mapping = {
     'arrive_date.date_relative'       :'arrival_date',

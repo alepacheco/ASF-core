@@ -8,8 +8,11 @@ month_lst = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July',
 days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 def main():
-    data = gen_phrase(10000)
-    file = open('test.txt', 'w')
+    gen_file('test.txt', 50)
+
+def gen_file(filename, units):
+    data = gen_phrase(units)
+    file = open(filename, 'a')
     file.write(gen_trainning_data(data[0], data[1]))
     file.close()
 
@@ -47,7 +50,9 @@ def get_start():
     return [text, ['O'] * length]
 
 # CVS with lots of cities
-with open('./cities.csv', 'rt') as f:
+import os
+path = os.path.dirname(os.path.abspath(__file__))
+with open(path + '/cities.csv', 'rt') as f:
     reader = csv.reader(f)
     cities = flatten(list(reader))
 
