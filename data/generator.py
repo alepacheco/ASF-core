@@ -110,7 +110,7 @@ def get_departure_date():
 
 def get_return_date():
     starts = ['to', 'returning on', 'comming back on', 'returning', 'comming back']
-    return get_date(starts, 'arrival_date')
+    return get_date(starts, 'return_date')
 
 def gen_phrase(nums, log=False):
     sentences_x = []
@@ -118,6 +118,7 @@ def gen_phrase(nums, log=False):
     for i in range(nums):
         labels = []
         text = []
+        # TODO shuffle
         sentence = [get_start(), getOrigin(), getDestination(), get_departure_date()]
         if randint(0, 1) == 0:
             sentence.append(get_return_date())

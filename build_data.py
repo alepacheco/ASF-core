@@ -1,7 +1,7 @@
 from model.config import Config
 from model.data_utils import CoNLLDataset, get_vocabs, UNK, NUM, MONTH, \
     get_glove_vocab, write_vocab, load_vocab, get_char_vocab, \
-    export_trimmed_glove_vectors, get_processing_word ,do_train_split, unpickle_atis, refine_classes
+    export_trimmed_glove_vectors, get_processing_word ,do_train_split, unpickle_atis, refine_classes, shuffle_file
 
 from data.generator import gen_file
 
@@ -29,7 +29,8 @@ def main():
     refine_classes(config.filename_data, config.mapping)
 
     # TODO randomize order
-    do_train_split(config.filename_data,config.filename_train,config.filename_test, percentage=0.9)
+    shuffle_file(config.filename_data)
+    do_train_split(config.filename_data, config.filename_train, config.filename_test)
     processing_word = get_processing_word(lowercase=True)
 
     # Generators

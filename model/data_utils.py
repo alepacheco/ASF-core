@@ -3,6 +3,7 @@ import os
 import re
 import csv
 import pickle
+import random
 
 # shared global variables to be imported from model also
 UNK = "<unk>"
@@ -256,7 +257,7 @@ def get_processing_word(vocab_words=None, vocab_chars=None,
                 word = NUM if word.isdigit() else word
         elif replace_digits:
             word = ''.join(list(map(lambda l:(NUM if l.isdigit() else l), word)))
-    
+
         if replace_month:
             word = re.sub(r'(?i)(january|february|march|april|may|june|july|august|september|october|november|december)', MONTH, word)
         if encode_iatas_bool:
@@ -471,6 +472,15 @@ def file_len(fname):
         x = x.split('\n\n')
         i = len(x)
     return i + 1
+
+def shuffle_file(fname):
+    with open(fname, 'r') as f:
+        x = f.read()
+        x = x.split('\n\n')
+        random.shuffle(x)
+    with open(fname, 'w') as f:
+        f.write('\n\n'.join(x))
+
 def unpickle_atis(filename_atispickle, filename_data):
     train, test, dic = pickle.load(open(filename_atispickle, 'rb'), encoding='latin-1')
     w2idx, ne2idx, labels2idx = dic['words2idx'], dic['tables2idx'], dic['labels2idx']

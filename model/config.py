@@ -76,7 +76,7 @@ class Config():
 
     # training
     train_embeddings = False
-    nepochs          = 15
+    nepochs          = 5
     dropout          = 0.5
     batch_size       = 246
     lr               = 0.01
@@ -86,7 +86,7 @@ class Config():
 
     # model hyperparameters
     hidden_size_char = 100 # lstm on chars
-    hidden_size_lstm = 300 # lstm on word embeddings
+    hidden_size_lstm = 100 # lstm on word embeddings
 
     use_chars = False
 
