@@ -156,13 +156,18 @@ def parse_labels(sentence, prediction):
         'destination': '',
         'departure_date': '',
         'return_date': '',
-        'departure_time': ''
+        'departure_time': '',
+        'raw': prediction
     }
 
     for i in range(len(sentence)):
         label = prediction[i]
         word = sentence[i]
         # TODO we are not using: arrival_date
+        if label == 'B-arrival_date':
+            label = 'B-return_date'
+        if label == 'I-arrival_date':
+            label = 'I-return_date'
 
         if label == "B-to":
             parsed['destination'] = word
